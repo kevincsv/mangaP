@@ -1,0 +1,25 @@
+{
+  "name": "mangaP",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon backend/app.js"
+  },
+  "keywords": [],
+  "author": "Kevin Camacho <kevindevrk@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "fs-extra": "^9.1.0",
+    "mongoose": "^5.12.3",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
