@@ -4,8 +4,9 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development nodemon backend/app.js",
-    "start": "cross-env NODE_ENV=production node backend/app.js"
+    "dev": "cross-env NODE_ENV=development nodemon backend/index.js --ignore frontend",
+    "start": "cross-env NODE_ENV=production node backend/index.js",
+    "build": "cross-env NODE_ENV=production webpack"
   },
   "keywords": [],
   "author": "Kevin Camacho <kevindevrk@gmail.com>",
@@ -15,12 +16,22 @@
     "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "express-validator": "^6.10.0",
     "fs-extra": "^9.1.0",
     "mongoose": "^5.12.3",
     "morgan": "^1.10.0",
     "multer": "^1.4.2"
   },
   "devDependencies": {
-    "nodemon": "^2.0.7"
+    "css-loader": "^5.2.0",
+    "html-webpack-plugin": "^5.3.1",
+    "mini-css-extract-plugin": "^1.4.1",
+    "nodemon": "^2.0.7",
+    "style-loader": "^2.0.0",
+    "timeago.js": "^4.0.2",
+    "vue": "^2.6.12",
+    "webpack": "^5.31.0",
+    "webpack-cli": "^4.6.0",
+    "webpack-dev-server": "^3.11.2"
   }
 }

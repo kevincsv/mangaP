@@ -2,11 +2,11 @@
 if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config();
 }
-
 const express = require('express');
 const morgan =  require('morgan');
 const multer = require('multer');
 const path = require('path');
+
 // *******************   INITIALIZATIONS   ******************* \\
 const app = express();
 require('./database');
