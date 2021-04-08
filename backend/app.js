@@ -1,4 +1,8 @@
 // *******************   REQUIREMENTS   ******************* \\
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config();
+}
+
 const express = require('express');
 const morgan =  require('morgan');
 const multer = require('multer');
@@ -23,7 +27,8 @@ app.use(multer({storage}).single('image'));
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 
-
+// *******************   STATIC FILES  ******************* \\
+app.use(express.static(path.join(__dirname, 'public')));
 
 // *******************   SERVER ROUTES   ******************* \\
 app.use('/', require('./routes/index'));

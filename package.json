@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "dev": "nodemon backend/app.js"
+    "dev": "cross-env NODE_ENV=development nodemon backend/app.js",
+    "start": "cross-env NODE_ENV=production node backend/app.js"
   },
   "keywords": [],
   "author": "Kevin Camacho <kevindevrk@gmail.com>",

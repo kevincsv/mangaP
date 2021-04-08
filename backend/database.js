@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 
-mongoose.connect("mongodb+srv://root:xZSVP4RLBlHkVPSG@clapi.b5nyc.mongodb.net/EM-API-INT?retryWrites=true", {
+console.log(process.env.MONGODB_URI)
+
+mongoose.connect(process.env.MONGODB_URI, {
     useCreateIndex: true,
     useNewUrlParser: true,
     useFindAndModify: false,
