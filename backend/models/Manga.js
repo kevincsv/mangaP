@@ -5,7 +5,7 @@ const MangaSchema = new Schema({
     author: { type: String, required: true},
     isbn: { type: String},
     imagePath: { type: String},
-    data: { type: Date, default: Date.now}
+    date: { type: Date, default: Date.now}
 })
 
 module.exports = model('Manga', MangaSchema);

@@ -8,13 +8,10 @@ const Manga = require('../models/Manga');
 
 router.get("/", async (req, res) => {
   const mangas = await Manga.find();
+  console.log(mangas);
   res.json(mangas);
 });
 
-router.get("/:id", async (req, res) => {
-  const mangas = await Manga.findById(req.params.id, { date: 0 });
-  res.json(mangas);
-})
 
 // *******************   CRUD (GET)   ******************* \\
 
@@ -50,9 +47,9 @@ router.put('/:id', body('title', 'Title is required').notEmpty(), async (req, re
     return res.status(400).json({ errors: errors.array() });
     }
 
-    await Manga.findByIdAndUpdate(req.params.id, { title, author });
+    const manga = await Manga.findByIdAndUpdate(req.params.id, { title, author, date: 0 }); //Sigue mostrando la fecha y debo correggir
     res.json('Manga modified successfully');
-    res.send(console.log('Manga modified successfully', 200, req.body));
+    res.send(console.log('Manga modified successfully \n \n' + 'Status Code', 200, ' \n\n ', manga, '\n \n was replaced for \n \n', req.body));
 });
 
 // // *******************  CRUD (PUT)  ******************* \\
@@ -61,8 +58,8 @@ router.put('/:id', body('title', 'Title is required').notEmpty(), async (req, re
 
 router.delete('/:id', async (req, res) => {
     await Manga.findByIdAndDelete(req.params.id);
-    res.json('Manga deleted succesfully');
-    res.send(console.log('Manga deleted succesfully', 204));
+    res.json('Manga deleted succesfully');s
+    res.send(console.log('Manga deleted succesfully \n \n', 204));
 });
 
 // *******************  CRUD (DELETE)  ******************* \\

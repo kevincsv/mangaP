@@ -31,7 +31,7 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // *******************   SERVER ROUTES   ******************* \\
-app.use('/', require('./routes/index'));
+app.use('/api', require('./routes/manga'));
 
 // *******************   LOG FOR SERVER STARTING   ******************* \\
 app.listen(app.get('port'), () => {
