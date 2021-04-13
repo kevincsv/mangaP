@@ -4,10 +4,12 @@ const { body, validationResult  } = require('express-validator');
 
 const Manga = require('../models/Manga');
 
+const verifyToken = require('../controllers/verifyToken');
+
 // *******************   CRUD (GET)   ******************* \\
 
-router.get("/", async (req, res) => {
-  const mangas = await Manga.find();
+router.get("/", verifyToken, async (req, res) => {
+  const mangas = await Manga.find({}, { __v: 0, date: 0 });
   console.log(mangas);
   res.json(mangas);
 });
@@ -17,7 +19,7 @@ router.get("/", async (req, res) => {
 
 // *******************   CRUD (POST)   ******************* \\
 
-router.post('/', body('title', 'Title is required').notEmpty(), async (req, res) => {
+router.post('/', verifyToken, body('title', 'Title is required').notEmpty(), async (req, res) => {
     
     const { title, author } = req.body;
     
@@ -27,7 +29,7 @@ router.post('/', body('title', 'Title is required').notEmpty(), async (req, res)
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const newManga = new Manga({ title, author });
+    const newManga = new Manga ({ title, author });
     await newManga.save();
     res.json('Manga Uploaded successfully');
     res.send(console.log('Manga Uploaded successfully', 201, newManga));
@@ -37,7 +39,7 @@ router.post('/', body('title', 'Title is required').notEmpty(), async (req, res)
 
 // // *******************   CRUD (PUT)   ******************* \\
 
-router.put('/:id', body('title', 'Title is required').notEmpty(), async (req, res) => {
+router.put('/:id', verifyToken, body('title', 'Title is required').notEmpty(), async (req, res) => {
 
     const { title, author } = req.body;
 
@@ -47,16 +49,16 @@ router.put('/:id', body('title', 'Title is required').notEmpty(), async (req, re
     return res.status(400).json({ errors: errors.array() });
     }
 
-    const manga = await Manga.findByIdAndUpdate(req.params.id, { title, author, date: 0 }); //Sigue mostrando la fecha y debo correggir
+    const manga = await Manga.findByIdAndUpdate(req.params.id, { title, author}, { date: 0 }); //Sigue mostrando la fecha y debo correggir
     res.json('Manga modified successfully');
-    res.send(console.log('Manga modified successfully \n \n' + 'Status Code', 200, ' \n\n ', manga, '\n \n was replaced for \n \n', req.body));
+    console.log('Manga modified successfully \n \n' + 'Status Code', 200, ' \n\n ', manga, '\n \n was replaced for \n \n', req.body);
 });
 
 // // *******************  CRUD (PUT)  ******************* \\
 
 // // *******************  CRUD (DELETE)  ******************* \\
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', verifyToken, async (req, res) => {
     await Manga.findByIdAndDelete(req.params.id);
     res.json('Manga deleted succesfully');s
     res.send(console.log('Manga deleted succesfully \n \n', 204));

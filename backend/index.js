@@ -10,6 +10,7 @@ const path = require('path');
 // *******************   INITIALIZATIONS   ******************* \\
 const app = express();
 require('./database');
+require('./controllers/authController');
 
 // *******************   SERVER SETTINGS   ******************* \\
 app.set('port', process.env.PORT || 3000);
@@ -31,8 +32,8 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // *******************   SERVER ROUTES   ******************* \\
-app.use('/api', require('./routes/manga'));
-
+app.use('/', require('./routes/manga'));
+app.use('/', require('./controllers/authController'));
 // *******************   LOG FOR SERVER STARTING   ******************* \\
 app.listen(app.get('port'), () => {
   console.log(`Server on port ${app.get('port')}`)
