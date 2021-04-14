@@ -6,5 +6,5 @@ mongoose.connect(process.env.MONGODB_URI, {
     useFindAndModify: false,
     useUnifiedTopology: true
 })
-    .then(DB => console.log(DB + 'DB is now connected'))
+    .then(DB => console.log('DB is now connected'))
     .catch(err => console.error(err));
