@@ -8,16 +8,15 @@ const verifyToken = require('./verifyToken')
 
 // *******************   SIGNUP   ******************* \\
 
-router.post('/signup', 
-    body('email', 'email is required').notEmpty().isEmail(), 
-    body('password', 'password is required').notEmpty(), async (req, res, next) => {
+router.post('/signup', body('email', 'email is required').notEmpty().isEmail(), 
+    body('password', 'password is required').notEmpty(), async (req, res) => {
 
     const { username, email, password } = req.body;
     
     const errors = validationResult(req);
     
     if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
+      return res.status(422).json({ errors: errors.array() });
     }
 
     const user = new User ({
@@ -31,7 +30,7 @@ router.post('/signup',
     await user.save();
 
     const token = jwt.sign({id: user._id}, process.env.SECRET, {
-        expiresIn: 60 * 60 * 24
+        expiresIn: process.env.JWT_TTL
     })
 
     res.json({auth: true, token})
@@ -40,11 +39,11 @@ router.post('/signup',
 // *******************   SIGNUP   ******************* \\
 
 
-router.get('/me', verifyToken, async (req, res, next) => {
+router.get('/me', verifyToken, async (req, res) => {
 
     const user = await User.findById(req.userId, { password: 0, __v: 0});
     if (!user) {
-        return res.status(404).send('User not found')
+        return res.status(404).json('User not found')
     }
 
     res.json(user);
@@ -72,7 +71,7 @@ router.post('/signin', async (req, res, next) => {
     }
 
     const token = jwt.sign({id: user._id}, process.env.SECRET, {
-        expiresIn: 60 * 60 * 24
+        expiresIn: process.env.JWT_TTL
     });
 
     res.json({auth: true, token});

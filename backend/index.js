@@ -9,8 +9,17 @@ const path = require('path');
 
 // *******************   INITIALIZATIONS   ******************* \\
 const app = express();
+const customGet = (req, _res, next) => {
+    const shallowReq = {
+        headers: req.headers,
+        get: req.get
+    }
+    req.get = (key, defaultValue) => shallowReq.get(key) || req.query[key] || req.params[key] || req.body[key] || defaultValue
+    next();
+}
+app.use(customGet)
+
 require('./database');
-require('./controllers/authController');
 
 // *******************   SERVER SETTINGS   ******************* \\
 app.set('port', process.env.PORT || 3000);
@@ -32,8 +41,9 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // *******************   SERVER ROUTES   ******************* \\
-app.use('/', require('./routes/manga'));
-app.use('/', require('./controllers/authController'));
+app.use('/mangas', require('./routes/manga'));
+app.use('/users', require('./controllers/authController'));
+
 // *******************   LOG FOR SERVER STARTING   ******************* \\
 app.listen(app.get('port'), () => {
   console.log(`Server on port ${app.get('port')}`)
