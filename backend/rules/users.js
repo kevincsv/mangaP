@@ -1,14 +1,11 @@
 const {check} = require ('express-validator');
 
-const index = [
+
+exports.users = [
 	check ('username', 'Username is required')
 		.notEmpty (),
-	check ('email', 'Email is not valid')
+	check ('email', 'Email not valid')
 		.isEmail (),
-	check ('email', 'Email is required')
-		.notEmpty (),
 	check ('password', 'Password is required')
 		.notEmpty ()
 ];
-
-module.exports = index;

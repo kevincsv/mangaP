@@ -1,16 +1,15 @@
-const {Router} = require ('express');
 const jwt = require ('jsonwebtoken');
 
-const router = Router ();
+const router = require ('../tools/router') ();
 
 const User = require ('../models/User');
-const verifyToken = require ('../middlewares/verifyToken');
+
 const rules = require ('../rules/users');
-const validator = require ('../tools/validator');
+
 
 // *******************   SIGNUP   ******************* \\
 
-router.post ('/signup', validator, rules, async (req, res) => {
+router.post ('/signup', router.makeMiddlewares ({rules: rules.users}), async (req, res) => {
 
 	const {username, email, password} = req.body;
 	const user = new User ({
@@ -32,9 +31,9 @@ router.post ('/signup', validator, rules, async (req, res) => {
 // *******************   SIGNUP   ******************* \\
 
 
-router.get ('/me', verifyToken, async (req, res) => {
+router.get ('/me', router.makeMiddlewares ({auth: true}), async (req, res) => {
 
-	const user = await User.findById (req.userId, {password: 0, __v: 0});
+	const user = await User.findById (req.userId, {password: 0});
 	if (!user) {
 		return res.status (404).json ('User not found');
 	}
@@ -45,7 +44,7 @@ router.get ('/me', verifyToken, async (req, res) => {
 
 // *******************   SIGNING   ******************* \\
 
-router.post ('/signing', async (req, res) => {
+router.post ('/signing', router.makeMiddlewares ({rules: rules.users}), async (req, res) => {
 
 	const {email, password} = req.body;
 

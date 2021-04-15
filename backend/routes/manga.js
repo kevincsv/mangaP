@@ -1,22 +1,21 @@
-const {Router} = require ('express');
-const router = Router ();
+const router = require ('../tools/router') ();
 
 const Manga = require ('../models/Manga');
 
-const verifyToken = require ('../middlewares/verifyToken');
 const rules = require ('../rules/mangas');
-const idRules = require ('../rules/mangaId');
-const validator = require ('../tools/validator');
+
 
 // *******************   CRUD (GET)   ******************* \\
 
-router.get ('/', verifyToken, async (req, res) => {
-	const mangas = await Manga.find ({}, {date: 0});
+router.get ('/', router.makeMiddlewares ({auth: true}), async (req, res) => {
+	const $search = req.get ('search');
+	// añadir filtros
+	const mangas = await Manga.find ($search ? {$text: {$search}} : null);
 	console.log (mangas);
 	res.json (mangas);
 });
 
-router.get ('/:id', verifyToken, idRules, async (req, res) => {
+router.get ('/:id', router.makeMiddlewares ({auth: true, rules: rules.show}), async (req, res) => {
 
 	const mangas = await Manga.findById (req.get ('id'));
 	res.json (mangas);
@@ -26,18 +25,16 @@ router.get ('/:id', verifyToken, idRules, async (req, res) => {
 
 // *******************   CRUD (POST)   ******************* \\
 
-router.post ('/', verifyToken, validator, rules, async (req, res) => {
+router.post ('/', router.makeMiddlewares ({auth: true, rules: rules.mangas}), async (req, res) => {
 		const {title, author} = req.body;
 
 		const newManga = new Manga ({
 			title,
 			author
 		});
-		await newManga.save ();
+		await newManga.save (); //try, catch
 
-		res.json ('Manga Uploaded successfully');
-
-		console.log ('Manga Uploaded successfully', 201, newManga);
+		res.status (201).json (newManga);
 	}
 );
 
@@ -45,7 +42,7 @@ router.post ('/', verifyToken, validator, rules, async (req, res) => {
 
 // // *******************   CRUD (PUT)   ******************* \\
 
-router.put ('/:id', verifyToken, rules, async (req, res) => {
+router.put ('/:id', router.makeMiddlewares ({auth: true, rules: rules.mangas}), async (req, res) => {
 		const {title, author} = req.body;
 
 		const manga = await Manga.findByIdAndUpdate (
@@ -61,7 +58,7 @@ router.put ('/:id', verifyToken, rules, async (req, res) => {
 
 // // *******************  CRUD (DELETE)  ******************* \\
 
-router.delete ('/:id', verifyToken, idRules, async (req, res) => {
+router.delete ('/:id', router.makeMiddlewares ({auth: true, rules: rules.show}), async (req, res) => {
 
 	await Manga.findByIdAndDelete (req.params.id);
 

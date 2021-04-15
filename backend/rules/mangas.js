@@ -1,7 +1,7 @@
 const {check} = require ('express-validator');
 const {validationResult} = require ('express-validator');
 
-const index = [
+exports.mangas = [
 	check ('title', 'title is required')
 		.notEmpty (),
 
@@ -9,4 +9,7 @@ const index = [
 		.notEmpty ()
 ];
 
-module.exports = index;
+exports.show = [
+	check ('id', 'Id not valid, try using a valid ID')
+		.isMongoId ()
+];
