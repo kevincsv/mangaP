@@ -11,7 +11,7 @@ const rules = require ('../rules/users');
 
 router.post ('/signup', router.makeMiddlewares ({rules: rules.users}), async (req, res) => {
 
-	const {username, email, password} = req.body;
+	const {username, email, password} = req.get ('body');
 	const user = new User ({
 		username,
 		email,
@@ -46,7 +46,7 @@ router.get ('/me', router.makeMiddlewares ({auth: true}), async (req, res) => {
 
 router.post ('/signing', router.makeMiddlewares ({rules: rules.users}), async (req, res) => {
 
-	const {email, password} = req.body;
+	const {email, password} = req.get ('body');
 
 	const user = await User.findOne ({email: email});
 	if (!user) {

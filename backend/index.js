@@ -6,10 +6,11 @@ const express = require ('express');
 const morgan = require ('morgan');
 const multer = require ('multer');
 const path = require ('path');
+const apiErrorHandler = require ('./middlewares/apiErrorHandler');
 
 // *******************   INITIALIZATIONS   ******************* \\
 const app = express ();
-const customGet = (req, _res, next) => {
+const customGet = (req, res, next) => {
 	const shallowReq = {
 		headers: req.headers,
 		get: req.get
@@ -44,6 +45,14 @@ app.use (express.static (path.join (__dirname, 'public')));
 app.use ('/mangas', require ('./routes/manga'));
 app.use ('/users', require ('./controllers/authController'));
 app.use ('/', require ('./routes/redirections'));
+
+// *******************   404 ERROR HANDLER    ******************* \\
+app.use ((req, res, next) => {
+	res.status (404).json ('Unable to find the requested resource!');
+});
+
+// *******************   ERROR HANDLER    ******************* \\
+app.use (apiErrorHandler);
 
 // *******************   LOG FOR SERVER STARTING   ******************* \\
 app.listen (app.get ('port'), () => {

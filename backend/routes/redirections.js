@@ -1,8 +1,7 @@
-const { Router } = require('express');
-const router = Router();
+const router = require ('../tools/router') ();
 
-router.get('/', (req, res) => {
-    res.redirect('/mangas')
+router.get ('/', router.makeMiddlewares ({auth: true}), (req, res) => {
+	res.redirect ('/mangas');
 });
 
 module.exports = router;

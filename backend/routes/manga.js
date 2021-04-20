@@ -4,6 +4,8 @@ const Manga = require ('../models/Manga');
 
 const rules = require ('../rules/mangas');
 
+const apiError = require ('../tools/apiErrors');
+
 
 // *******************   CRUD (GET)   ******************* \\
 
@@ -38,33 +40,34 @@ router.post ('/', router.makeMiddlewares ({auth: true, rules: rules.mangas}), as
 	}
 );
 
-// // *******************   CRUD (POST)   ******************* \\
+// *******************   CRUD (POST)   ******************* \\
 
-// // *******************   CRUD (PUT)   ******************* \\
+// *******************   CRUD (PUT)   ******************* \\
 
 router.put ('/:id', router.makeMiddlewares ({auth: true, rules: rules.mangas}), async (req, res) => {
-		const {title, author} = req.body;
+	try {
+		const {title, author} = req.get ('ids');
 
-		const manga = await Manga.findByIdAndUpdate (
-			req.params.id,
-			{title, author}
-		);
-		res.json ('Manga modified successfully');
-		console.log ('Manga modified successfully \n \n' + 'Status Code', 200, ' \n\n ', manga, '\n \n was replaced for \n \n', req.body);
+		await Manga.findByIdAndUpdate (req.get ('id'), {title, author});
+		res.status (200).json (req.body);
+	} catch (err) {
+		console.error (err);
 	}
-);
+});
 
-// // *******************  CRUD (PUT)  ******************* \\
+// *******************  CRUD (PUT)  ******************* \\
 
-// // *******************  CRUD (DELETE)  ******************* \\
+// *******************  CRUD (DELETE)  ******************* \\
 
 router.delete ('/:id', router.makeMiddlewares ({auth: true, rules: rules.show}), async (req, res) => {
+	try {
+		const manga = await Manga.findById (req.get ('id'));
+		await Manga.findByIdAndDelete (req.get ('id'));
+		res.status (200).json (manga);
+	} catch (error) {
+		console.log (error);
+	}
 
-	await Manga.findByIdAndDelete (req.params.id);
-
-	res.json ('Manga deleted successfully');
-
-	console.log ('Manga deleted successfully \n \n', 204);
 });
 
 // *******************  CRUD (DELETE)  ******************* \\
