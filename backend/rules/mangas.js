@@ -1,15 +1,24 @@
 const {check} = require ('express-validator');
-const {validationResult} = require ('express-validator');
+const makeShowValidator = require ('../tools/makeShowValidator');
+const Manga = require ('../models/Manga');
 
-exports.mangas = [
+const show = makeShowValidator ('manga', Manga, 'Manga');
+
+const create = [
 	check ('title', 'title is required')
 		.notEmpty (),
 
 	check ('author', 'author is required')
+		.notEmpty (),
+
+	check ('description', 'description is required')
 		.notEmpty ()
 ];
 
-exports.show = [
-	check ('id', 'Id not valid, try using a valid ID')
-		.isMongoId ()
-];
+exports.create = create;
+
+exports.show = show;
+
+exports.update = show.concat (create);
+
+exports.delete = show;

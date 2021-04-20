@@ -1,15 +1,12 @@
-const apiError = require ('../tools/apiErrors');
+// const MongooseError = require ('mongoose/lib/error');
 
-function apiErrorHandler (err, req, res, next) {
-	console.log (err); // replace for log handler to reduce lag
+module.exports = (err, req, res, next) => {
+	// console.log (123, typeof err, err instanceof MongooseError);
+	console.log (err);
 
-	if (err instanceof apiError) {
-		res.status (err.code).json (err.message);
-		return;
-	}
-	res.status (err.status || 500);
-	res.json (err);
-
-}
-
-module.exports = apiErrorHandler;
+	res.status (err.status || 500).json ({
+		error: {
+			msg: err.message || 'Something went wrong'
+		}
+	});
+};

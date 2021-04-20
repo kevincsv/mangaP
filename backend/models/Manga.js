@@ -1,13 +1,13 @@
-const { Schema, model } = require('mongoose');
+const {Schema, model} = require ('mongoose');
 
-const MangaSchema = new Schema({
-    title: { type: String, required: true },
-    author: { type: String, required: true},
-    isbn: { type: String},
-    imagePath: { type: String},
-    date: { type: Date, default: Date.now}
+const MangaSchema = new Schema ({
+	title: {type: String, required: true},
+	author: {type: String, required: true},
+	description: {type: String},
+	imagePath: {type: String},
+	date: {type: Date, default: Date.now}
 }, {
-    versionKey: false 
+	versionKey: false
 });
 
-module.exports = model('Manga', MangaSchema);
+module.exports = model ('Manga', MangaSchema);

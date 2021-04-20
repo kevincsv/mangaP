@@ -2,25 +2,23 @@
 if (process.env.NODE_ENV !== 'production') {
 	require ('dotenv').config ();
 }
+
 const express = require ('express');
+const mongoose = require ('mongoose');
 const morgan = require ('morgan');
 const multer = require ('multer');
 const path = require ('path');
+
+const customGet = require ('./tools/customGet');
 const apiErrorHandler = require ('./middlewares/apiErrorHandler');
+require ('./database');
 
 // *******************   INITIALIZATIONS   ******************* \\
-const app = express ();
-const customGet = (req, res, next) => {
-	const shallowReq = {
-		headers: req.headers,
-		get: req.get
-	};
-	req.get = (key, defaultValue) => shallowReq.get (key) || req.query[ key ] || req.params[ key ] || req.body[ key ] || defaultValue;
-	next ();
-};
-app.use (customGet);
 
-require ('./database');
+mongoose.set ('returnOriginal', false);
+const app = express ();
+
+app.use (customGet);
 
 // *******************   SERVER SETTINGS   ******************* \\
 app.set ('port', process.env.PORT || 3000);
@@ -42,13 +40,15 @@ app.use (express.json ());
 app.use (express.static (path.join (__dirname, 'public')));
 
 // *******************   SERVER ROUTES   ******************* \\
-app.use ('/mangas', require ('./routes/manga'));
+app.use ('/mangas', require ('./routes/mangas'));
 app.use ('/users', require ('./controllers/authController'));
 app.use ('/', require ('./routes/redirections'));
 
 // *******************   404 ERROR HANDLER    ******************* \\
-app.use ((req, res, next) => {
-	res.status (404).json ('Unable to find the requested resource!');
+app.use ((_req, res) => {
+	res.status (404).json ({
+		error: 'Unable to process your request!'
+	});
 });
 
 // *******************   ERROR HANDLER    ******************* \\
