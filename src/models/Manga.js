@@ -1,7 +1,7 @@
 const {Schema, model} = require ('mongoose');
 
 const MangaSchema = new Schema ({
-	title: {type: String, required: true},
+	title: {type: String, required: true, unique: true},
 	author: {type: String, required: true},
 	description: {type: String},
 	imagePath: {type: String},

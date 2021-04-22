@@ -6,7 +6,14 @@ const show = makeShowValidator ('manga', Manga, 'Manga');
 
 const create = [
 	check ('title', 'title is required')
-		.notEmpty (),
+		.notEmpty ()
+
+		.custom((value) => Manga.find ({title: value}).then (manga => {
+			if (manga.length) {
+				return Promise.reject ('Manga already exists');
+			}
+
+		})),
 
 	check ('author', 'author is required')
 		.notEmpty (),

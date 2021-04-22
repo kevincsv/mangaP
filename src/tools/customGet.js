@@ -11,7 +11,10 @@ module.exports = (req, _res, next) => {
 	 * @param key = string | string[]
 	 * @param defaultValue = any | {*}
 	 * @returns any | {*}
-	 */
+	 *
+	 **/
+
+
 	req.get = (key, defaultValue) => {
 		if (Array.isArray (key)) {
 			return key.reduce ((accumulator, k) => {

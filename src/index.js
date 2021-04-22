@@ -41,7 +41,7 @@ app.use (express.static (path.join (__dirname, 'public')));
 
 // *******************   SERVER ROUTES   ******************* \\
 app.use ('/mangas', require ('./routes/mangas'));
-app.use ('/users', require ('./controllers/authController'));
+app.use ('/users', require ('./routes/users'));
 app.use ('/', require ('./routes/redirections'));
 
 // *******************   404 ERROR HANDLER    ******************* \\

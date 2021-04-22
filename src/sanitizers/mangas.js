@@ -1,4 +1,5 @@
-const {check} = require ('express-validator');
+const { check } = require ('express-validator');
+
 const Manga = require ('../models/Manga');
 
 const show = [
