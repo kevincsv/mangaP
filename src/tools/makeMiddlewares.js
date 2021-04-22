@@ -1,5 +1,5 @@
-const validateRequest = require ('./validator');
-const verifyToken = require ('../middlewares/verifyToken');
+const validateRequest = require('./validator');
+const verifyToken = require('../middlewares/verifyToken');
 
 module.exports = ({
 	                  auth = false,
@@ -13,7 +13,7 @@ module.exports = ({
 		...(auth ? [verifyToken] : []),
 		...beforeValidators,
 		// importante, auto validación <3
-		...(rules.concat (rules.length ? validateRequest : [])),
+		...(rules.concat(rules.length ? validateRequest : [])),
 		...afterValidators,
 		...sanitizers,
 		...afterSanitizers

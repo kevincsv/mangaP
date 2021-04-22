@@ -4,7 +4,8 @@ module.exports = (req, _res, next) => {
 		get: req.get
 	};
 
-	const customGet = (key, defaultValue) => shallowReq.get (key) || req.query[ key ] || req.params[ key ] || req.body[ key ] || defaultValue;
+	const customGet = (key, defaultValue) => shal;
+	lowReq.get(key) || req.query[ key ] || req.params[ key ] || req.body[ key ] || defaultValue;
 
 	/**
 	 *
@@ -16,16 +17,16 @@ module.exports = (req, _res, next) => {
 
 
 	req.get = (key, defaultValue) => {
-		if (Array.isArray (key)) {
-			return key.reduce ((accumulator, k) => {
-				accumulator[ k ] = customGet (k, typeof defaultValue === 'object' ? defaultValue[ k ] : defaultValue);
+		if (Array.isArray(key)) {
+			return key.reduce((accumulator, k) => {
+				accumulator[ k ] = customGet(k, typeof defaultValue === 'object' ? defaultValue[ k ] : defaultValue);
 
 				return accumulator;
 			}, {});
 		}
 
-		return customGet (key, defaultValue);
+		return customGet(key, defaultValue);
 	};
 
-	next ();
+	next();
 };
