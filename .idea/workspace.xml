@@ -3,27 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="3e21daee-153e-45c0-a52d-a7e837761bd8" name="Default Changelist" comment="First commit">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/mangaController.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/mangaController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/userController.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/userController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/database.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/middlewares/apiErrorHandler.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/middlewares/apiErrorHandler.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/middlewares/verifyToken.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/middlewares/verifyToken.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/Manga.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Manga.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/User.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/mangas.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/mangas.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/redirections.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/redirections.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/users.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/rules/mangas.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/rules/mangas.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/rules/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/rules/users.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sanitizers/mangas.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/sanitizers/mangas.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sanitizers/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/sanitizers/users.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tools/apiErrors.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/tools/apiErrors.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tools/customGet.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/tools/customGet.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tools/makeMiddlewares.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/tools/makeMiddlewares.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tools/makeShowValidator.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/tools/makeShowValidator.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tools/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/tools/router.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tools/validator.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/tools/validator.js" afterDir="false" />
     </list>
     <list id="33870374-7d0c-4dcd-97b8-03b8f102a67e" name="Changes by emili" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -229,7 +208,7 @@
       <workItem from="1619083004855" duration="42000" />
       <workItem from="1619083059700" duration="80000" />
       <workItem from="1619086379452" duration="3855000" />
-      <workItem from="1619090302324" duration="724000" />
+      <workItem from="1619090302324" duration="781000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <created>1618423772695</created>
