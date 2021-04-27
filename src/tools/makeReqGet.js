@@ -4,8 +4,7 @@ module.exports = (req, _res, next) => {
 		get: req.get
 	};
 
-	const customGet = (key, defaultValue) => shal;
-	lowReq.get(key) || req.query[ key ] || req.params[ key ] || req.body[ key ] || defaultValue;
+	const customGet = (key, defaultValue) => shallowReq.get(key) || req.query[ key ] || req.params[ key ] || req.body[ key ] || defaultValue;
 
 	/**
 	 *

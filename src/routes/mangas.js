@@ -9,8 +9,8 @@ const controller = require('../controllers/mangaController');
 
 router
 	// *******************   CRUD (INDEX)   ******************* \\
-	.get('/', router.makeMiddlewares({auth: true}), controller.index)
- 
+	.get('/mangas', router.makeMiddlewares({auth: true}), controller.index)
+
 	// *******************   CRUD (SHOW)   ******************* \\
 	.get('/:manga', router.makeMiddlewares({
 		auth: true,

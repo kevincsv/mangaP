@@ -1,5 +1,5 @@
 const validateRequest = require('./validator');
-const verifyToken = require('../middlewares/verifyToken');
+const verifyToken = require('../middlewares/auth');
 
 module.exports = ({
 	                  auth = false,

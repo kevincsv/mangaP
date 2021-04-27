@@ -1,6 +1,8 @@
 const {check} = require('express-validator');
 
-const signup = [
+const User = require('../models/User');
+
+exports.signup = [
 	check('username')
 		.trim(),
 
@@ -9,15 +11,13 @@ const signup = [
 		.normalizeEmail()
 ];
 
-const signin = [
+exports.signin = [
 	check('email')
 		.trim()
 		.normalizeEmail()
+		.custom((value, {req}) => User.findOne({email: value}).then(user => {
+			req.user = user;
+		}))
 ];
-
-
-exports.signup = signup;
-
-exports.signin = signin;
 
 

@@ -1,10 +1,10 @@
 const router = require('../tools/router')();
 
-const rules = require('../rules/users');
+const rules = require('../rules/auth');
 
-const sanitizers = require('../sanitizers/users');
+const sanitizers = require('../sanitizers/auth');
 
-const controller = require('../controllers/userController');
+const controller = require('../controllers/authController');
 
 router
 	// *******************   SIGNUP   ******************* \\

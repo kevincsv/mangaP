@@ -9,7 +9,8 @@ const morgan = require('morgan');
 const multer = require('multer');
 const path = require('path');
 
-const customGet = require('./tools/customGet');
+const makeReqGet = require('./tools/makeReqGet');
+const makeResToJSON = require('./tools/makeResToJSON');
 const apiErrorHandler = require('./middlewares/apiErrorHandler');
 require('./database');
 
@@ -18,7 +19,8 @@ require('./database');
 mongoose.set('returnOriginal', false);
 const app = express();
 
-app.use(customGet);
+app.use(makeReqGet);
+app.use(makeResToJSON);
 
 // *******************   SERVER SETTINGS   ******************* \\
 app.set('port', process.env.PORT || 3000);
@@ -41,8 +43,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // *******************   SERVER ROUTES   ******************* \\
 app.use('/mangas', require('./routes/mangas'));
-app.use('/users', require('./routes/users'));
+app.use('/users', require('./routes/auth'));
 app.use('/', require('./routes/redirections'));
+
+app.use('/hola', require('./asdasdd'));
 
 // *******************   404 ERROR HANDLER    ******************* \\
 app.use((_req, res) => {
@@ -53,7 +57,7 @@ app.use((_req, res) => {
 
 // *******************   ERROR HANDLER    ******************* \\
 app.use(apiErrorHandler);
- 
+
 // *******************   LOG FOR SERVER STARTING   ******************* \\
 app.listen(app.get('port'), () => {
 	console.log(`Server on port ${app.get('port')}`);
