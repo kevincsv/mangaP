@@ -10,7 +10,7 @@ router
 	// *******************   SIGNUP   ******************* \\
 	.post('/signup', router.makeMiddlewares({
 		rules: rules.signup,
-		sanitizer: sanitizers.signup
+		sanitizers: sanitizers.signup
 	}), controller.signup)
 
 	// *******************   SHOW   ******************* \\
@@ -21,7 +21,7 @@ router
 	// *******************   SIGNING   ******************* \\
 	.post('/signin', router.makeMiddlewares({
 		rules: rules.signin,
-		sanitizer: sanitizers.signin
+		sanitizers: sanitizers.signin
 	}), controller.signin);
 
 
