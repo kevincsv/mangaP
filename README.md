@@ -72,5 +72,5 @@ The **PUT** method needs the ID to be able to update the values, as the **GET** 
 The **DELETE** method needs the ID to be able to delete the information
 
 
-- Or you can also clone the repository, install all the dependecies using `npm i` and put the necessary environment variables for it to work, the variables necessary for it to work are in the example file **'.env .example'** just create a new file called **.env** with all the variables and their values, after that you can easily use the command `npm run dev` to start the server in development mode and start interacting with it, by default the server runs on port 3000, you can use it or change it to the one you prefer in the main index.js file
+- Or you can also clone the repository, install all the dependecies using `npm i` and put the necessary environment variables for it to work, the variables necessary for it to work are in the example file **'.env .example'** just create a new file called **.env** with all the variables and their values, after that you can easily use the command `npm run dev` to start the server in development mode and start interacting with it, by default the server runs on port 3000, you can use it or change it to the one you prefer in the main **index.js** file.
 
