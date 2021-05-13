@@ -35,5 +35,5 @@ Algolia is used as the custom search engine for the API since it has many functi
 # 💡Getting Started 
 To see how this project works you can access the following [link](https://manga-bk.herokuapp.com/) after accessing the link you can use [Postman](https://www.postman.com/) or any tool of your choice to interact with the API.
 
-also 
+You can also clone the repository, install all the dependecies and put the necessary environment variables for it to work, the variables necessary for it to work are in the example file **'.env .example'** just create a new file called **.env** with all the variables and their values.
 
