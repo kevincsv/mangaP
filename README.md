@@ -36,8 +36,26 @@ Algolia is used as the custom search engine for the API since it has many functi
 To see how this project works you have two options
 
 ## Option 1: Using Heroku enviroment
-1. You can access the following [link](https://manga-bk.herokuapp.com/) and after accessing the link you can use [Postman](https://www.postman.com/) or any tool of your choice to interact with the API.                                                                                                                                                             
+To test this API You can access the following [link](https://manga-bk.herokuapp.com/) and after accessing the link you can use [Postman](https://www.postman.com/) or any tool of your choice to interact with the API.                                                                                                                                                             
 The server is currently deployed in [heroku](https://www.heroku.com/) for learning purposes only, you can use all the API features as you like to see how the API interacts.
+
+## Option 2: Cloning repository
+>To use this method you'll need an account in - [MongoDB](https://www.mongodb.com/) and [Algolia](https://www.algolia.com/)
+
+Clone the repository and follow these steps:
+
+1. install all the dependecies using `npm i`.
+
+2. Register in Algolia and get your API keys, indexes and your APP ID
+
+2. Create a database in MongoDB using the tool of your preference either Atlas, Compass or Mongo Shell and configure it.
+   - Get your MongoDB URI and your username and password, after this just go to the next step
+ 
+3. If you already have your MongoDB URI with their respective username and password just create an **.env** file and put the necessary environment variables and their values for it to work, the variables are in the example file **.env .example**.
+
+4. After that you can easily use the command `npm run dev` to start the server in development mode and start interacting with it, by default the server runs on port 3000, you can use it or change it to the one you prefer in the main **index.js** file.
+
+## Interaction with the API
 
 To interact with the api you will need an access token (JWT) to place in the Header and it can be obtained by creating a new user or logging in with any of the existing users.
 
@@ -50,12 +68,12 @@ To be quick and simple you can use the following credentials to get your token
   - Just paste it in the body in Postman or any tool of your choice and choose the method **POST** and send it to the server as a json using the following header `Content-Type` as the key and `application/json` as the value.
   - This json must be sent to the following EndPoint to receive the Access Token https://manga-bk.herokuapp.com/users/signin, if you have any question just follow the following pictures as a guide
 
-
 ### Header
 ![Signin example 2](https://user-images.githubusercontent.com/29514668/118193890-c0c96080-b448-11eb-9635-672201687de3.png)
 
 ### Body
 ![Signin example](https://user-images.githubusercontent.com/29514668/118193546-2b2dd100-b448-11eb-8efe-895e8b40d7a1.png)
+
 
 The main EndPoint of the API is the following:
 
@@ -71,6 +89,4 @@ The **POST** method only accepts the following keys: `title, author, description
 The **PUT** method needs the ID to be able to update the values, as the **GET** filtering it is placed as a parameter in the EndPoint
 
 The **DELETE** method needs the ID to be able to delete the information
-## Option 2: Cloning repository
-2. Or you can also clone the repository, install all the dependecies using `npm i` and put the necessary environment variables for it to work, the variables necessary for it to work are in the example file **'.env .example'** just create a new file called **.env** with all the variables and their values, after that you can easily use the command `npm run dev` to start the server in development mode and start interacting with it, by default the server runs on port 3000, you can use it or change it to the one you prefer in the main **index.js** file.
 
