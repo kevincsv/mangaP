@@ -51,7 +51,7 @@ Clone the repository and follow these steps:
 2. Create a database in MongoDB using the tool of your preference either Atlas, Compass or Mongo Shell and configure it.
    - Get your MongoDB URI and your username and password, after this just go to the next step
  
-3. If you already have your MongoDB URI with their respective username and password just create an **.env** file and put the necessary environment variables and their values for it to work, the variables are in the example file **.env .example**.
+3. If you already have your MongoDB URI with their respective username and password just create an **.env** file and put the necessary environment variables and their values for it to work, the variables are in the example file **.env.example**.
 
 4. After that you can easily use the command `npm run dev` to start the server in development mode and start interacting with it, by default the server runs on port 3000, you can use it or change it to the one you prefer in the main **index.js** file.
 
@@ -66,7 +66,7 @@ To be quick and simple you can use the following credentials to get your token
 }
 
   - Just paste it in the body in Postman or any tool of your choice and choose the method **POST** and send it to the server as a json using the following header `Content-Type` as the key and `application/json` as the value.
-  - This json must be sent to the following EndPoint to receive the Access Token https://manga-bk.herokuapp.com/users/signin, if you have any question just follow the following pictures as a guide
+  - This json must be sent to the following EndPoint to receive the Access Token https://manga-bk.herokuapp.com/users/signin, if you have any question just follow the following pictures as a guide.
 
 ### Header
 ![Signin example 2](https://user-images.githubusercontent.com/29514668/118193890-c0c96080-b448-11eb-9635-672201687de3.png)
@@ -79,14 +79,14 @@ The main EndPoint of the API is the following:
 
 - [Mangas](https://manga-bk.herokuapp.com/mangas) it shows a list of all the information stored in the DataBase, just click on the embedded link or copy and paste the following link in your preferred Tool to interact with API's. https://manga-bk.herokuapp.com/mangas
 
-This endpoint can interact with the complete **CRUD**, being able to send requests with the methods, **GET, POST, PUT, DELETE.**
+This endpoint can interact with the complete **CRUD**, being able to send requests with the methods, **GET, POST, PUT, DELETE.**.
 
 The **GET** method accepts as a parameter any ID that already exists and will return all the information regarding that ID, here is a example of the Endpoint
 >https://manga-bk.herokuapp.com/mangas/6078b073fd30ed5df8448669.
 
-The **POST** method only accepts the following keys: `title, author, description`
+The **POST** method only accepts the following keys: `title, author, description`.
 
-The **PUT** method needs the ID to be able to update the values, as the **GET** filtering it is placed as a parameter in the EndPoint
+The **PUT** method needs the ID to be able to update the values, as the **GET** filtering it is placed as a parameter in the EndPoint.
 
-The **DELETE** method needs the ID to be able to delete the information
+The **DELETE** method needs the ID to be able to delete the information.
 
