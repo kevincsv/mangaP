@@ -2,4 +2,15 @@ MONGODB_URI=
 
 SECRET=
 
+# 60 * 60 * 24
 JWT_TTL=
+
+
+# Algolia admin api key
+ALG_ADMIN=
+
+# Algolia application ID
+ALG_APP_ID=
+
+# Algolia Index Name
+ALG_DEV_INDEX=
