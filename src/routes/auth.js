@@ -19,7 +19,7 @@ router
 	}), controller.show)
 
 	// *******************   SIGNING   ******************* \\
-	.post('/signing', router.makeMiddlewares({
+	.post('/signin', router.makeMiddlewares({
 		rules: rules.signin,
 		sanitizer: sanitizers.signin
 	}), controller.signin);

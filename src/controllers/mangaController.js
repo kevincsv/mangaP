@@ -1,18 +1,37 @@
 const Manga = require('../models/Manga');
 
+const algoliasearch = require('algoliasearch');
+
+const client = algoliasearch(process.env.ALG_APP_ID, process.env.ALG_ADMIN);
+const index = client.initIndex(process.env.ALG_DEV_INDEX);
+
 // *******************   CRUD (Index)   ******************* \\
 exports.index = async (req, res, next) => {
 	try {
+		let filter = {};
 		const $search = req.get('search');
-		// {$text: {$search}}
-		const mangas = await Manga.find($search ? {$text: {$search}} : null
-		);
+
+		if ($search) {
+			const searchResult = await index.search($search, {
+				attributesToRetrieve: [
+					'objectID'
+				],
+				attributesToHighlight: [
+					0
+				]
+			}, '').then(({hits}) => hits.map(({objectID}) => objectID));
+
+			filter = {_id: {$in: searchResult}};
+		}
+
+		const mangas = await Manga.find(filter);
 
 		res.toJSON(mangas);
 	} catch (err) {
 		next(err);
 	}
-};
+}
+;
 
 // *******************   CRUD (Show)   ******************* \\
 
@@ -27,6 +46,7 @@ exports.create = async (req, res, next) => {
 		const data = req.get(['title', 'author', 'description']);
 
 		const manga = await Manga.create(data);
+
 
 		res.status(201).toJSON(manga);
 	} catch (err) {
@@ -43,6 +63,14 @@ exports.update = async (req, res, next) => {
 
 		Object.assign(manga, data);
 		await manga.save();
+
+		const objects = [{
+			title: manga.title,
+			author: manga.author,
+			objectID: manga._id
+		}];
+
+		await index.saveObjects(objects);
 
 		res.toJSON(manga);
 	} catch (err) {

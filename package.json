@@ -12,6 +12,8 @@
   "author": "Kevin Camacho <kevindevrk@gmail.com>",
   "license": "ISC",
   "dependencies": {
+    "4": "*",
+    "algoliasearch": "^3.35.1",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "cross-env": "^7.0.3",
@@ -20,7 +22,8 @@
     "express-validator": "^6.10.0",
     "fs-extra": "^9.1.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.12.3",
+    "mongoolia": "^1.0.3",
+    "mongoose": "^5.12.6",
     "morgan": "^1.10.0",
     "multer": "^1.4.2"
   },

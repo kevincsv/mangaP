@@ -46,8 +46,6 @@ app.use('/mangas', require('./routes/mangas'));
 app.use('/users', require('./routes/auth'));
 app.use('/', require('./routes/redirections'));
 
-app.use('/hola', require('./asdasdd'));
-
 // *******************   404 ERROR HANDLER    ******************* \\
 app.use((_req, res) => {
 	res.status(404).json({
