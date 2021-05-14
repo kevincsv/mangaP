@@ -5,6 +5,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 const morgan = require('morgan');
 const multer = require('multer');
 const path = require('path');
@@ -19,6 +20,7 @@ require('./database');
 mongoose.set('returnOriginal', false);
 const app = express();
 
+app.use(cors);
 app.use(makeReqGet);
 app.use(makeResToJSON);
 
