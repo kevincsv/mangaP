@@ -2,7 +2,24 @@
 
 This project is made in order to learn and put into practice my knowledge of JavaScript on the BackEnd side, it was born as a personal project for the realization of sharing multimedia content for free, It consists of a RESTful API, which allows to perform a CRUD, complete and partial searches and image uploads.
 
-# Tools and frameworks
+# Table of Contents
+- [Features](#features)
+- [Tools and Frameworks](#tools-and-frameworks)
+- [Getting Started](#getting-started)
+   - [Option 1](#option-1-using-heroku-enviroment)
+   - [Option 2](#option-2-cloning-repository)
+   - [Interaction with the API](#interaction-with-the-api)
+
+
+# Features
+-
+-
+-
+-
+-
+-
+
+## Tools and frameworks
 This API includes the following tools and frameworks.
 
 - [NodeJS](https://nodejs.org/en/) with the following dependencies, if you want to learn more about these dependencies just click on their respective link.
@@ -74,12 +91,17 @@ To be quick and simple you can use the following credentials to get your token
 ### Body
 ![Signin example](https://user-images.githubusercontent.com/29514668/118193546-2b2dd100-b448-11eb-8efe-895e8b40d7a1.png)
 
+after this you will receive a Token like this
+
+`eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwN2M0YWIyY2Y0ZDFlMDc5NDBiOThjZiIsImlhdCI6MTYxOTA4NDk3OSwiZXhwIjoxNjE5MTcxMzc5fQ.yQL6octsE4scC2xj5UNwUuNETZsxWqyRyJlcpFigpao`
+
+Now you need to add a new header with the key `x-access-token` using your token as the value, your token will expire after 1 day, that way you don't have to worry about repeating these steps again.
 
 The main EndPoint of the API is the following:
 
 - [Mangas](https://manga-bk.herokuapp.com/mangas) it shows a list of all the information stored in the DataBase, just click on the embedded link or copy and paste the following link in your preferred Tool to interact with API's. https://manga-bk.herokuapp.com/mangas
 
-This endpoint can interact with the complete **CRUD**, being able to send requests with the methods, **GET, POST, PUT, DELETE.**.
+This endpoint can interact with the complete **CRUD**, being able to send requests with the methods, **GET, POST, PUT, DELETE.**
 
 The **GET** method accepts as a parameter any ID that already exists and will return all the information regarding that ID, here is a example of the Endpoint
 >https://manga-bk.herokuapp.com/mangas/6078b073fd30ed5df8448669.
