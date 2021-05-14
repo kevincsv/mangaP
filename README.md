@@ -44,7 +44,7 @@ This API includes the following tools and frameworks.
 - [MongoDB](https://www.mongodb.com/)
 - [Algolia](https://www.algolia.com/)
 
-# <img src="https://emojis.slackmojis.com/emojis/images/1487369371/1776/nodejs.png?1487369371"  width="35"> NodeJS
+## <img src="https://emojis.slackmojis.com/emojis/images/1487369371/1776/nodejs.png?1487369371"  width="35"> NodeJS
 NodeJs was used to create the entire server environment using JavaScript as the main language with the implementation of the newest features included in ES6 such as: Let, Const and Arrow functions.
 
 ## <img src="https://emojis.slackmojis.com/emojis/images/1487369371/1776/nodejs.png?1487369371"  width="35"> ExpressJS
