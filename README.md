@@ -1,8 +1,8 @@
-# About this project 
+# ❓About this project 
 
 This project is made in order to learn and put into practice my knowledge of JavaScript on the BackEnd side, it was born as a personal project for the realization of sharing multimedia content for free, It consists of a RESTful API, which allows to perform a CRUD, complete and partial searches and image uploads.
 
-# Table of Contents
+# 📑Table of Contents
 - [Features](#features)
 - [Tools and Frameworks](#tools-and-frameworks)
 - [Getting Started](#getting-started)
@@ -22,7 +22,7 @@ This project is made in order to learn and put into practice my knowledge of Jav
 - Image uploads
 
 
-# Tools and frameworks
+# 🧰Tools and frameworks
 This API includes the following tools and frameworks.
 
 - [NodeJS](https://nodejs.org/en/) with the following dependencies, if you want to learn more about these dependencies just click on their respective link.
@@ -55,11 +55,11 @@ Algolia is used as the custom search engine for the API since it has many functi
 # 💡Getting Started 
 To see how this project works you have two options
 
-## Option 1: Using Heroku enviroment
+## 🟡Option 1: Using Heroku enviroment
 To test this API You can access the following [link](https://manga-bk.herokuapp.com/) and after accessing the link you can use [Postman](https://www.postman.com/) or any tool of your choice to interact with the API.                                                                                                                                                             
 The server is currently deployed in [heroku](https://www.heroku.com/) for learning purposes only, you can use all the API features as you like to see how the API interacts.
 
-## Option 2: Cloning repository
+## 🟠Option 2: Cloning repository
 >To use this method you'll need an account in - [MongoDB](https://www.mongodb.com/) and [Algolia](https://www.algolia.com/)
 
 Clone the repository and follow these steps:
