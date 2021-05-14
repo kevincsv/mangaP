@@ -6,20 +6,23 @@ This project is made in order to learn and put into practice my knowledge of Jav
 - [Features](#features)
 - [Tools and Frameworks](#tools-and-frameworks)
 - [Getting Started](#getting-started)
-   - [Option 1](#option-1-using-heroku-enviroment)
-   - [Option 2](#option-2-cloning-repository)
+   - [Testing](#getting-started)
+      - [Option 1](#option-1-using-heroku-enviroment)
+      - [Option 2](#option-2-cloning-repository)
    - [Interaction with the API](#interaction-with-the-api)
 
 
-# Features
--
--
--
--
--
--
+# ✨Features
+- Simple and easy-to-implement API for many practical and learning uses
+- Full CRUD
+- Full error handling to quickly see what is wrong
+- Full JSON's compatibility
+- Complete and partial searches
+  - Custom search with statistics
+- Image uploads
 
-## Tools and frameworks
+
+# Tools and frameworks
 This API includes the following tools and frameworks.
 
 - [NodeJS](https://nodejs.org/en/) with the following dependencies, if you want to learn more about these dependencies just click on their respective link.
