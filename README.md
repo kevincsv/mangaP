@@ -14,6 +14,7 @@ This project is made in order to learn and put into practice my knowledge of Jav
       - [Option 1](#option-1-using-heroku-enviroment)
       - [Option 2](#option-2-cloning-repository)
    - [Interaction with the API](#interaction-with-the-api)
+- [Troubleshouting](#troubleshouting)
 
 
 # ✨Features
@@ -118,4 +119,8 @@ The **POST** method only accepts the following keys: `title, author, description
 The **PUT** method needs the ID to be able to update the values, as the **GET** filtering it is placed as a parameter in the EndPoint.
 
 The **DELETE** method needs the ID to be able to delete the information.
+
+# ❗Troubleshouting
+
+If you find any problem in my code or anything else, feel free to contact me, open a issue or do a pull request, that way I can keep learning and I can improve the code so that way anyone else can learn from it in the best way.
 
