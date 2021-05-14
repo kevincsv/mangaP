@@ -43,9 +43,17 @@ exports.show = async (req, res) => {
 
 exports.create = async (req, res, next) => {
 	try {
-		const data = req.get(['title', 'author', 'description']);
+		const data = req.get(['title', 'author', 'genre', 'description']);
 
 		const manga = await Manga.create(data);
+
+		const objects = [{
+			title: manga.title,
+			author: manga.author,
+			objectID: manga._id
+		}];
+
+		await index.saveObjects(objects);
 
 
 		res.status(201).toJSON(manga);
@@ -58,7 +66,7 @@ exports.create = async (req, res, next) => {
 
 exports.update = async (req, res, next) => {
 	try {
-		const data = req.get(['title', 'author', 'description']);
+		const data = req.get(['title', 'author', 'genre', 'description']);
 		const manga = req.get('manga');
 
 		Object.assign(manga, data);
@@ -83,6 +91,9 @@ exports.update = async (req, res, next) => {
 exports.delete = async (req, res, next) => {
 	try {
 		const manga = req.get('manga');
+		index.deleteObjects([manga._id]).then(() => {
+			// Algolia index deleted
+		});
 		await manga.delete();
 
 		res.status(204).json();
