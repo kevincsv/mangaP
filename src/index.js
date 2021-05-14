@@ -20,7 +20,7 @@ require('./database');
 mongoose.set('returnOriginal', false);
 const app = express();
 
-app.use(cors);
+app.use(cors());
 app.use(makeReqGet);
 app.use(makeResToJSON);
 
