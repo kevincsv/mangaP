@@ -1,4 +1,6 @@
 const Manga = require('../models/Manga');
+const {unlink} = require('fs-extra');
+const path = require('path');
 
 const algoliasearch = require('algoliasearch');
 
@@ -43,7 +45,16 @@ exports.show = async (req, res) => {
 
 exports.create = async (req, res, next) => {
 	try {
+
 		const data = req.get(['title', 'author', 'genre', 'description']);
+
+		if (req.file) {
+			const imagePath = '/uploads/' + req.file.filename;
+			const image = {imagePath: imagePath};
+
+			Object.assign(data, image);
+		}
+
 
 		const manga = await Manga.create(data);
 
@@ -91,12 +102,17 @@ exports.update = async (req, res, next) => {
 exports.delete = async (req, res, next) => {
 	try {
 		const manga = req.get('manga');
+
 		index.deleteObjects([manga._id]).then(() => {
 			// Algolia index deleted
 		});
 		await manga.delete();
 
-		res.status(204).json();
+		if (manga.imagePath) {
+			unlink(path.resolve('./src/public' + manga.imagePath));
+		}
+
+		res.status(204).json('Manga deleted');
 	} catch (err) {
 		next(err);
 	}
