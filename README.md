@@ -1,6 +1,6 @@
 # ❓About this project 
 
-This project is made in order to learn and put into practice my knowledge of JavaScript on the BackEnd side, it was born as a personal project for the realization of sharing multimedia content for free, It consists of a RESTful API, which allows to perform a CRUD, complete and partial searches and image uploads.
+This project is made in order to learn and put into practice my knowledge of JavaScript on the BackEnd side, it was born as a personal project for the realization of sharing multimedia content for free, It consists of a RESTful API, which allows to perform a CRUD, complete and partial searches with pagination and image uploads.
 
 # 📑Table of Contents
 - [Features](#features)
@@ -112,7 +112,39 @@ The main EndPoint of the API is the following:
 This endpoint can interact with the complete **CRUD**, being able to send requests with the methods, **GET, POST, PUT, DELETE.**
 
 The **GET** method accepts as a parameter any ID that already exists and will return all the information regarding that ID, here is a example of the Endpoint
->https://manga-bk.herokuapp.com/mangas/6078b073fd30ed5df8448669.
+>https://manga-bk.herokuapp.com/mangas/609ffa45fbe4925aa004e503.
+
+If you make a request to that Endpoint you will receive a response similar to this
+
+![Response example](https://user-images.githubusercontent.com/29514668/118373063-f8551b80-b5b4-11eb-9661-8377b0bdd968.png)
+
+In the same way that you can filter by ID, you can search the data using `'title' and 'author'` by simply adding to the query what you want to search, look at the following example as a guide `https://manga-bk.herokuapp.com/mangas?search=YOURTEXT`
+
+### Query Search example
+![Query example](https://user-images.githubusercontent.com/29514668/118373228-05bed580-b5b6-11eb-800f-f87f9ce496d1.png)
+
+### Response
+
+![Query response](https://user-images.githubusercontent.com/29514668/118373256-2424d100-b5b6-11eb-9f25-646bbd93a25a.png)
+
+in adition you can request all the docs in the database and select how many you want to get in your response using `limit=NUMBERSONLY` for your limit and `page=NUMBERSONLY` to select the page you want to see
+
+### Limit example
+
+![Limit query example](https://user-images.githubusercontent.com/29514668/118373463-33f0e500-b5b7-11eb-8b4a-cc937cfa5c7c.png)
+
+### Response
+
+![Limit response](https://user-images.githubusercontent.com/29514668/118373384-c93fa980-b5b6-11eb-933c-382e282e39a1.png)
+
+### Limit and page example
+
+![limit and page query example](https://user-images.githubusercontent.com/29514668/118373468-466b1e80-b5b7-11eb-9d03-3d0f714deba3.png)
+
+### Response
+
+![limit and page response](https://user-images.githubusercontent.com/29514668/118373408-f1c7a380-b5b6-11eb-9599-72e40209b7fc.png)
+
 
 The **POST** method only accepts the following keys: `title, author, description`.
 
