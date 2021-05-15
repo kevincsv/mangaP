@@ -12,7 +12,7 @@ router
 	.get('/', router.makeMiddlewares({auth: true}), controller.index)
 
 	// *******************   CRUD (SHOW)   ******************* \\
-	.get('/:mangas', router.makeMiddlewares({
+	.get('/:manga', router.makeMiddlewares({
 		auth: true,
 		rules: rules.show,
 		sanitizers: sanitizers.show
