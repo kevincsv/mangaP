@@ -1,4 +1,5 @@
 const {Schema, model} = require('mongoose');
+const mongoosePaginate = require('mongoose-paginate-v2');
 
 const makeModelToJson = require('../tools/makeModelToJson');
 const makeModelUpdateAt = require('../tools/makeModelUpdateAt');
@@ -15,7 +16,10 @@ const MangaSchema = new Schema({
 	versionKey: false
 });
 
+
 makeModelToJson({schema: MangaSchema});
 makeModelUpdateAt(MangaSchema);
+
+MangaSchema.plugin(mongoosePaginate);
 
 module.exports = model('Manga', MangaSchema);

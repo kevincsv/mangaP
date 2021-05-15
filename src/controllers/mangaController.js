@@ -26,9 +26,14 @@ exports.index = async (req, res, next) => {
 			filter = {_id: {$in: searchResult}};
 		}
 
-		const mangas = await Manga.find(filter);
+		const limit = parseInt(req.query.limit, 10) || 10;
+		const page = parseInt(req.query.page, 10) || 1;
 
-		res.toJSON(mangas);
+		const mangas = await Manga.paginate(filter, {limit, page});
+
+		console.log(mangas);
+
+		res.json(mangas);
 	} catch (err) {
 		next(err);
 	}
