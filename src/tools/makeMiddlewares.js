@@ -12,12 +12,9 @@ module.exports = ({
 	return [
 		...(auth ? [verifyToken] : []),
 		...beforeValidators,
-		// importante, auto validación <3
 		...(rules.concat(rules.length ? validateRequest : [])),
 		...afterValidators,
 		...sanitizers,
 		...afterSanitizers
 	];
 };
-
-// !auth || verifyToken

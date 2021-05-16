@@ -28,17 +28,15 @@ exports.index = async (req, res, next) => {
 
 		const limit = parseInt(req.query.limit, 10) || 10;
 		const page = parseInt(req.query.page, 10) || 1;
+		const sort = {createdAt: req.query.sort} || {createdAt: 1};
 
-		const mangas = await Manga.paginate(filter, {limit, page});
-
-		console.log(mangas);
+		const mangas = await Manga.paginate(filter, {limit, page, sort});
 
 		res.json(mangas);
 	} catch (err) {
 		next(err);
 	}
-}
-;
+};
 
 // *******************   CRUD (Show)   ******************* \\
 
