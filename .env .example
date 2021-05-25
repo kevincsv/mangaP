@@ -15,8 +15,9 @@ ALG_APP_ID=
 ALG_DEV_INDEX=
 
 # AWS S3 Secret credentials
-AWSID=
-AWSSECRETKEY=
+AWS_SECRET_ID=
+
+AWS_SECRET_KEY=
 
 # The name of the bucket that you have created
 BUCKET_NAME=

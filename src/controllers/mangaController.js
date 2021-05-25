@@ -1,9 +1,6 @@
 const Manga = require('../models/Manga');
 const {unlink} = require('fs-extra');
 const path = require('path');
-const fs = require('fs');
-
-const {pipe} = require('fs');
 
 const algoliasearch = require('algoliasearch');
 
@@ -56,13 +53,12 @@ exports.create = async (req, res, next) => {
 
 		if (file) {
 			data.imagePath = '/mangas/image/' + file.filename;
+
+			await uploadToS3(file);
+			await unlink(path.resolve(file.path));
 		}
 		const manga = await Manga.create(data);
 
-
-		const result = await uploadToS3(file);
-		await unlink(path.resolve(file.path));
-		console.log(result);
 
 		res.status(201).toJSON(manga);
 	} catch
@@ -101,11 +97,8 @@ exports.delete = async (req, res, next) => {
 };
 
 exports.image = async (req, res) => {
-	console.log(req.params);
-	const key = req.params.key;
+	const key = req.get('key');
 	const readStream = getFileStream(key);
-
-	// '/uploads/' +
 
 	readStream.pipe(res);
 };

@@ -8,9 +8,9 @@ const makeModelToJson = require('../tools/makeModelToJson');
 const makeModelUpdateAt = require('../tools/makeModelUpdateAt');
 
 const MangaSchema = new Schema({
-	title: {type: String, required: false, unique: true},
-	author: {type: String, required: false},
-	genre: {type: String, required: false},
+	title: {type: String, required: true, unique: true},
+	author: {type: String, required: true},
+	genre: {type: String, required: true},
 	description: {type: String},
 	imagePath: {type: String},
 	createdAt: {type: Date, default: Date.now},
@@ -28,7 +28,7 @@ MangaSchema.plugin(mongooseAlgolia, {
 	appId: process.env.ALG_APP_ID,
 	apiKey: process.env.ALG_ADMIN,
 	indexName: process.env.ALG_DEV_INDEX,
-	debug: true
+	debug: false
 });
 
 const Model = model('Manga', MangaSchema);
