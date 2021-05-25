@@ -8,6 +8,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const morgan = require('morgan');
 const multer = require('multer');
+const multerS3 = require('multer-s3-transform');
 const path = require('path');
 
 const makeReqGet = require('./tools/makeReqGet');
@@ -16,7 +17,6 @@ const apiErrorHandler = require('./middlewares/apiErrorHandler');
 require('./database');
 
 // *******************   INITIALIZATIONS   ******************* \\
-
 mongoose.set('returnOriginal', false);
 const app = express();
 

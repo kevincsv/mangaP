@@ -6,10 +6,12 @@ const sanitizers = require('../sanitizers/mangas');
 
 const controller = require('../controllers/mangaController');
 
-
 router
 	// *******************   CRUD (INDEX)   ******************* \\
-	.get('/', router.makeMiddlewares({auth: true}), controller.index)
+	.get('/', router.makeMiddlewares({
+		auth: true,
+		rules: rules.pagination
+	}), controller.index)
 
 	// *******************   CRUD (SHOW)   ******************* \\
 	.get('/:manga', router.makeMiddlewares({

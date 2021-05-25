@@ -13,3 +13,13 @@ ALG_APP_ID=
 
 # Algolia Index Name
 ALG_DEV_INDEX=
+
+# AWS S3 Secret credentials
+AWSID=
+AWSSECRETKEY=
+
+# The name of the bucket that you have created
+BUCKET_NAME=
+
+# The region of your bucket
+REGION=

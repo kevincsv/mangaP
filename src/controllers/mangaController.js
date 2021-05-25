@@ -2,6 +2,8 @@ const Manga = require('../models/Manga');
 const {unlink} = require('fs-extra');
 const path = require('path');
 
+// const {uploadFile} = require('../S3');
+
 const algoliasearch = require('algoliasearch');
 
 const client = algoliasearch(process.env.ALG_APP_ID, process.env.ALG_ADMIN);
@@ -32,32 +34,25 @@ exports.index = async (req, res, next) => {
 
 		const mangas = await Manga.paginate(filter, {limit, page, sort});
 
-		res.json(mangas);
+		res.toJSON(mangas);
 	} catch (err) {
 		next(err);
 	}
 };
 
 // *******************   CRUD (Show)   ******************* \\
-
 exports.show = async (req, res) => {
 	res.toJSON(req.get('manga'));
 };
 
 // *******************   CRUD (Create)   ******************* \\
-
 exports.create = async (req, res, next) => {
 	try {
-
 		const data = req.get(['title', 'author', 'genre', 'description']);
 
 		if (req.file) {
-			const imagePath = '/uploads/' + req.file.filename;
-			const image = {imagePath: imagePath};
-
-			Object.assign(data, image);
+			data.imagePath = '/uploads/' + req.file.filename;
 		}
-
 
 		const manga = await Manga.create(data);
 
@@ -71,13 +66,13 @@ exports.create = async (req, res, next) => {
 
 
 		res.status(201).toJSON(manga);
-	} catch (err) {
+	} catch
+		(err) {
 		next(err);
 	}
 };
 
 // *******************   CRUD (Update)   ******************* \\
-
 exports.update = async (req, res, next) => {
 	try {
 		const data = req.get(['title', 'author', 'genre', 'description']);
@@ -101,7 +96,6 @@ exports.update = async (req, res, next) => {
 };
 
 // *******************   CRUD (Delete)   ******************* \\
-
 exports.delete = async (req, res, next) => {
 	try {
 		const manga = req.get('manga');
