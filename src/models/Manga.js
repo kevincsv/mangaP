@@ -8,9 +8,9 @@ const makeModelToJson = require('../tools/makeModelToJson');
 const makeModelUpdateAt = require('../tools/makeModelUpdateAt');
 
 const MangaSchema = new Schema({
-	title: {type: String, required: true, unique: true},
-	author: {type: String, required: true},
-	genre: {type: String, required: true},
+	title: {type: String, required: false, unique: true},
+	author: {type: String, required: false},
+	genre: {type: String, required: false},
 	description: {type: String},
 	imagePath: {type: String},
 	createdAt: {type: Date, default: Date.now},

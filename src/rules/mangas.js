@@ -26,21 +26,21 @@ const pagination = [
 ];
 
 const create = [
-	check('title', 'title is required')
-		.notEmpty()
-
-		.custom((value) => Manga.find({title: value}).then(manga => {
-			if (manga.length) {
-				return Promise.reject('Manga already exists');
-			}
-
-		})),
-
-	check('author', 'author is required')
-		.notEmpty(),
-
-	check('description', 'description is required')
-		.notEmpty()
+	// check('title', 'title is required')
+	// 	.notEmpty()
+	//
+	// 	.custom((value) => Manga.find({title: value}).then(manga => {
+	// 		if (manga.length) {
+	// 			return Promise.reject('Manga already exists');
+	// 		}
+	//
+	// 	})),
+	//
+	// check('author', 'author is required')
+	// 	.notEmpty(),
+	//
+	// check('description', 'description is required')
+	// 	.notEmpty()
 ];
 
 exports.create = create;

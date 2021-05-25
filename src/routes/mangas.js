@@ -13,6 +13,11 @@ router
 		rules: rules.pagination
 	}), controller.index)
 
+	.get('/image/:key', router.makeMiddlewares({
+		auth: false,
+		rules: rules.pagination
+	}), controller.image)
+
 	// *******************   CRUD (SHOW)   ******************* \\
 	.get('/:manga', router.makeMiddlewares({
 		auth: true,
