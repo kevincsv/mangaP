@@ -56,15 +56,6 @@ exports.create = async (req, res, next) => {
 
 		const manga = await Manga.create(data);
 
-		const objects = [{
-			title: manga.title,
-			author: manga.author,
-			objectID: manga._id
-		}];
-
-		await index.saveObjects(objects);
-
-
 		res.status(201).toJSON(manga);
 	} catch
 		(err) {
@@ -81,14 +72,6 @@ exports.update = async (req, res, next) => {
 		Object.assign(manga, data);
 		await manga.save();
 
-		const objects = [{
-			title: manga.title,
-			author: manga.author,
-			objectID: manga._id
-		}];
-
-		await index.saveObjects(objects);
-
 		res.toJSON(manga);
 	} catch (err) {
 		next(err);
@@ -100,9 +83,6 @@ exports.delete = async (req, res, next) => {
 	try {
 		const manga = req.get('manga');
 
-		index.deleteObjects([manga._id]).then(() => {
-			// Algolia index deleted
-		});
 		await manga.delete();
 
 		if (manga.imagePath) {
