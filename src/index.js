@@ -4,16 +4,14 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 const express = require('express');
-const mongoose = require('mongoose');
 const cors = require('cors');
+const mongoose = require('mongoose');
 const morgan = require('morgan');
-const multer = require('multer');
-const multerS3 = require('multer-s3-transform');
 const path = require('path');
 
+const apiErrorHandler = require('./middlewares/apiErrorHandler');
 const makeReqGet = require('./tools/makeReqGet');
 const makeResToJSON = require('./tools/makeResToJSON');
-const apiErrorHandler = require('./middlewares/apiErrorHandler');
 require('./database');
 
 // *******************   INITIALIZATIONS   ******************* \\
@@ -30,13 +28,6 @@ app.set('json spaces', 2);
 
 // *******************   MIDDLEWARES   ******************* \\
 app.use(morgan('dev'));
-const storage = multer.diskStorage({
-	destination: path.join(__dirname, 'uploads'),
-	filename(req, file, cb) {
-		cb(null, new Date().getTime() + path.extname(file.originalname));
-	}
-});
-app.use(multer({storage}).single('image'));
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 

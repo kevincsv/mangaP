@@ -1,5 +1,5 @@
-module.exports = ({schema, hide = []} = {}) => {
-	schema.methods.toJSON = function () {
+module.exports = (Schema, {hide = []} = {}) => {
+	Schema.methods.toJSON = function () {
 		const obj = this.toObject();
 
 		for (const h of hide) {

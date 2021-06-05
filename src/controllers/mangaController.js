@@ -1,38 +1,10 @@
 const Manga = require('../models/Manga');
-const {unlink} = require('fs-extra');
-const path = require('path');
-
-const algoliasearch = require('algoliasearch');
-
-const {uploadToS3, getFileStream} = require('../S3');
-
-const client = algoliasearch(process.env.ALG_APP_ID, process.env.ALG_ADMIN);
-const index = client.initIndex(process.env.ALG_DEV_INDEX);
 
 // *******************   CRUD (Index)   ******************* \\
 exports.index = async (req, res, next) => {
 	try {
-		let filter = {};
-		const $search = req.get('search');
-
-		if ($search) {
-			const searchResult = await index.search($search, {
-				attributesToRetrieve: [
-					'objectID'
-				],
-				attributesToHighlight: [
-					0
-				]
-			}, '').then(({hits}) => hits.map(({objectID}) => objectID));
-
-			filter = {_id: {$in: searchResult}};
-		}
-
-		const limit = parseInt(req.query.limit, 10) || 10;
-		const page = parseInt(req.query.page, 10) || 1;
-		const sort = {createdAt: req.query.sort} || {createdAt: 1};
-
-		const mangas = await Manga.paginate(filter, {limit, page, sort});
+		const mangas = await Manga.search(req.get('search'))
+			.then(({filter, query}) => query.paginate(filter, req.pagination()));
 
 		res.toJSON(mangas);
 	} catch (err) {
@@ -52,21 +24,16 @@ exports.create = async (req, res, next) => {
 		const file = req.file;
 
 		if (file) {
-			data.imagePath = '/mangas/image/' + file.filename;
-
-			await uploadToS3(file);
-			await unlink(path.resolve(file.path));
+			data.imagePath = file.location;
+			data.imageKey = file.key;
 		}
 		const manga = await Manga.create(data);
 
-
 		res.status(201).toJSON(manga);
-	} catch
-		(err) {
+	} catch (err) {
 		next(err);
 	}
-}
-;
+};
 
 // *******************   CRUD (Update)   ******************* \\
 exports.update = async (req, res, next) => {
@@ -94,11 +61,4 @@ exports.delete = async (req, res, next) => {
 	} catch (err) {
 		next(err);
 	}
-};
-
-exports.image = async (req, res) => {
-	const key = req.get('key');
-	const readStream = getFileStream(key);
-
-	readStream.pipe(res);
 };

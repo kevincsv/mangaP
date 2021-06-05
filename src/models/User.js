@@ -1,5 +1,5 @@
-const {Schema, model} = require('mongoose');
 const bcrypt = require('bcryptjs');
+const {Schema, model} = require('mongoose');
 
 const makeModelToJson = require('../tools/makeModelToJson');
 const makeModelUpdateAt = require('../tools/makeModelUpdateAt');
@@ -24,8 +24,8 @@ UserSchema.methods.validatePassword = function (password) {
 	return bcrypt.compare(password, this.password);
 };
 
-makeModelToJson({schema: UserSchema, hide: ['password']});
-makeModelUpdateAt(UserSchema);
+UserSchema.plugin(makeModelToJson, {hide: ['password']});
+UserSchema.plugin(makeModelUpdateAt);
 
 UserSchema
 	.pre('save', async function (next) {

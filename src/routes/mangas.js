@@ -1,22 +1,19 @@
+const controller = require('../controllers/mangaController');
+
 const router = require('../tools/router')();
 
 const rules = require('../rules/mangas');
 
 const sanitizers = require('../sanitizers/mangas');
 
-const controller = require('../controllers/mangaController');
+const uploadS3 = require('../tools/s3');
 
 router
 	// *******************   CRUD (INDEX)   ******************* \\
 	.get('/', router.makeMiddlewares({
 		auth: true,
-		rules: rules.pagination
+		pageable: true
 	}), controller.index)
-
-	.get('/image/:key', router.makeMiddlewares({
-		auth: false,
-		rules: rules.pagination
-	}), controller.image)
 
 	// *******************   CRUD (SHOW)   ******************* \\
 	.get('/:manga', router.makeMiddlewares({
@@ -29,7 +26,8 @@ router
 	.post('/', router.makeMiddlewares({
 		auth: true,
 		rules: rules.create,
-		sanitizers: sanitizers.create
+		sanitizers: sanitizers.create,
+		afterSanitizers: [uploadS3('images/mangas/').single('image')]
 	}), controller.create)
 
 	// *******************   CRUD (UPDATE)   ******************* \\

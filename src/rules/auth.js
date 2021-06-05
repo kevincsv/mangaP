@@ -1,10 +1,10 @@
-const {check} = require('express-validator');
+const {body} = require('express-validator');
 
 const User = require('../models/User');
 
 // *******************   SIGNUP   ******************* \\
 exports.signup = [
-	check('username', 'Username is required and can not be blank')
+	body('username', 'Username is required and can not be blank')
 		.notEmpty()
 
 		.custom((value) => User.findOne({username: value}).then(user => {
@@ -13,7 +13,7 @@ exports.signup = [
 			}
 		})),
 
-	check('email', 'Email must be valid and can not be blank')
+	body('email', 'Email must be valid and can not be blank')
 		.isEmail()
 
 		.custom((value) => User.findOne({email: value}).then(user => {
@@ -22,10 +22,10 @@ exports.signup = [
 			}
 		})),
 
-	check('password', 'Password is required and must be  alphanumeric only')
+	body('password', 'Password is required and must be  alphanumeric only')
 		.isAlphanumeric(),
 
-	check('confirmPassword')
+	body('confirmPassword')
 		.isAlphanumeric()
 
 		.custom((value, {req}) => {
@@ -39,10 +39,10 @@ exports.signup = [
 
 // *******************   SIGNING   ******************* \\
 exports.signin = [
-	check('email', 'Email must be valid and can not be blank')
+	body('email', 'Email must be valid and can not be blank')
 		.isEmail(),
 
-	check('password', 'Password is required and must be alphanumeric only')
+	body('password', 'Password is required and must be alphanumeric only')
 		.isAlphanumeric()
 
 		.notEmpty()

@@ -1,17 +1,16 @@
 const {Schema, model} = require('mongoose');
 const mongoosePaginate = require('mongoose-paginate-v2');
-const mongooseAlgolia = require('mongoose-algolia');
 
-require('dotenv').config();
-
+const makeModelSearch = require('../tools/makeModelSearch');
 const makeModelToJson = require('../tools/makeModelToJson');
 const makeModelUpdateAt = require('../tools/makeModelUpdateAt');
 
 const MangaSchema = new Schema({
-	title: {type: String, required: true, unique: true},
-	author: {type: String, required: true},
-	genre: {type: String, required: true},
+	title: {type: String, required: false, unique: true},
+	author: {type: String, required: false},
+	genre: {type: String, required: false},
 	description: {type: String},
+	imageKey: {type: String},
 	imagePath: {type: String},
 	createdAt: {type: Date, default: Date.now},
 	updatedAt: {type: Date, default: Date.now}
@@ -19,17 +18,10 @@ const MangaSchema = new Schema({
 	versionKey: false
 });
 
-makeModelToJson({schema: MangaSchema});
-makeModelUpdateAt(MangaSchema);
-
+MangaSchema.plugin(makeModelSearch, {indexName: process.env.ALGOLIA_INDEX_MANGA});
+MangaSchema.plugin(makeModelToJson);
+MangaSchema.plugin(makeModelUpdateAt);
 MangaSchema.plugin(mongoosePaginate);
-
-MangaSchema.plugin(mongooseAlgolia, {
-	appId: process.env.ALG_APP_ID,
-	apiKey: process.env.ALG_ADMIN,
-	indexName: process.env.ALG_DEV_INDEX,
-	debug: false
-});
 
 const Model = model('Manga', MangaSchema);
 

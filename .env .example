@@ -12,7 +12,7 @@ ALG_ADMIN=
 ALG_APP_ID=
 
 # Algolia Index Name
-ALG_DEV_INDEX=
+ALG_MANGA_INDEX=
 
 # AWS S3 Secret credentials
 AWS_SECRET_ID=

@@ -1,21 +1,21 @@
-const {check} = require('express-validator');
+const {body} = require('express-validator');
 
 const User = require('../models/User');
 
 exports.signup = [
-	check('username')
+	body('username')
 		.trim(),
 
-	check('email')
+	body('email')
 		.trim()
 		.normalizeEmail()
 ];
 
 exports.signin = [
-	check('email')
+	body('email')
 		.trim()
 		.normalizeEmail()
-		.custom((value, {req}) => User.findOne({email: value}).then(user => {
+		.customSanitizer((value, {req}) => User.findOne({email: value}).then(user => {
 			req.user = user;
 		}))
 ];

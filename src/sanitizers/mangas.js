@@ -1,17 +1,17 @@
-const {check, query} = require('express-validator');
+const {body, param} = require('express-validator');
 
 const Manga = require('../models/Manga');
 
 const show = [
-	check('manga').customSanitizer(value => Manga.findById(value))
+	param('manga').customSanitizer(value => Manga.findById(value))
 ];
 
 const create = [
-	check('title').trim(),
+	body('title').trim(),
 
-	check('author').trim(),
+	body('author').trim(),
 
-	check('description').trim()
+	body('description').trim()
 ];
 
 exports.create = create;

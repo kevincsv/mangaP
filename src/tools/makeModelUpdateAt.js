@@ -1,5 +1,5 @@
-module.exports = (schema) => {
-	schema.pre(['save', 'update'], function (next) {
+module.exports = (Schema) => {
+	Schema.pre(['save', 'update'], function (next) {
 		this.updatedAt = new Date;
 
 		next();
