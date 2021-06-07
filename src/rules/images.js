@@ -1,4 +1,4 @@
-const fileFilter = (req, file, cb, next) => {
+module.exports = (req, file, cb, next) => {
 	try {
 		if (file.mimetype === 'image/jpeg' || 'image/png' || 'image/jpg') {
 			cb(null, true);
@@ -10,5 +10,3 @@ const fileFilter = (req, file, cb, next) => {
 		next(err);
 	}
 };
-
-module.exports = fileFilter;

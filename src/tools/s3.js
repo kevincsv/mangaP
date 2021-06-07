@@ -4,7 +4,7 @@ const multerS3 = require('multer-s3');
 const path = require('path');
 const {uuid} = require('uuidv4');
 
-const fileFilter = require('./imageValidator');
+const imageRules = require('../rules/images');
 
 const s3 = new aws.S3({
 	accessKeyId: process.env.AWS_SECRET_ID,
@@ -13,11 +13,11 @@ const s3 = new aws.S3({
 	Region: process.env.AWS_REGION
 });
 
-exports.uploadToS3 = (folder = '') => multer({
+exports.uploadToS3 = (folder = '', {fileFilter = imageRules} = {}) => multer({
 	fileFilter,
 	storage: multerS3({
 		s3,
-		bucket: 'rest-manga-bk',
+		bucket: process.env.AWS_BUCKET_NAME,
 		metadata: function (req, file, cb) {
 			cb(null, {fieldName: file.fieldname});
 		},
@@ -33,11 +33,9 @@ exports.deleteImage = (imageKey) => {
 		Key: imageKey
 	};
 
-	return s3.deleteObject(params, (err, data) => {
+	return s3.deleteObject(params, (err) => {
 		if (err) {
-			console.log(err);
-		} else {
-			console.log(data);
+			throw err;
 		}
 	}).promise();
 };

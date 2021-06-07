@@ -1,6 +1,7 @@
 const {Schema, model} = require('mongoose');
 const mongoosePaginate = require('mongoose-paginate-v2');
 
+const makeModelFileDelete = require('../tools/makeModelFileDelete');
 const makeModelSearch = require('../tools/makeModelSearch');
 const makeModelToJson = require('../tools/makeModelToJson');
 const makeModelUpdateAt = require('../tools/makeModelUpdateAt');
@@ -18,6 +19,7 @@ const MangaSchema = new Schema({
 	versionKey: false
 });
 
+MangaSchema.plugin(makeModelFileDelete, {field: 'imageKey'});
 MangaSchema.plugin(makeModelSearch, {indexName: process.env.ALGOLIA_INDEX_MANGA});
 MangaSchema.plugin(makeModelToJson);
 MangaSchema.plugin(makeModelUpdateAt);
