@@ -6,7 +6,7 @@ const rules = require('../rules/mangas');
 
 const sanitizers = require('../sanitizers/mangas');
 
-const uploadS3 = require('../tools/s3');
+const {uploadToS3} = require('../tools/s3');
 
 router
 	// *******************   CRUD (INDEX)   ******************* \\
@@ -27,7 +27,7 @@ router
 		auth: true,
 		rules: rules.create,
 		sanitizers: sanitizers.create,
-		afterSanitizers: [uploadS3('images/mangas/').single('image')]
+		afterSanitizers: [uploadToS3('images/mangas/').single('image')]
 	}), controller.create)
 
 	// *******************   CRUD (UPDATE)   ******************* \\

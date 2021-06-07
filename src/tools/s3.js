@@ -13,7 +13,7 @@ const s3 = new aws.S3({
 	Region: process.env.AWS_REGION
 });
 
-module.exports = (folder = '') => multer({
+exports.uploadToS3 = (folder = '') => multer({
 	fileFilter,
 	storage: multerS3({
 		s3,
@@ -26,3 +26,18 @@ module.exports = (folder = '') => multer({
 		}
 	})
 });
+
+exports.deleteImage = (imageKey) => {
+	const params = {
+		Bucket: process.env.AWS_BUCKET_NAME,
+		Key: imageKey
+	};
+
+	return s3.deleteObject(params, (err, data) => {
+		if (err) {
+			console.log(err);
+		} else {
+			console.log(data);
+		}
+	}).promise();
+};

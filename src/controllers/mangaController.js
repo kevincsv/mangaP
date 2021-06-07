@@ -1,5 +1,7 @@
 const Manga = require('../models/Manga');
 
+const {deleteImage} = require('../tools/s3');
+
 // *******************   CRUD (Index)   ******************* \\
 exports.index = async (req, res, next) => {
 	try {
@@ -54,6 +56,8 @@ exports.update = async (req, res, next) => {
 exports.delete = async (req, res, next) => {
 	try {
 		const manga = req.get('manga');
+
+		deleteImage(manga.imageKey);
 
 		await manga.delete();
 
