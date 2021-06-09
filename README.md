@@ -9,6 +9,7 @@ This project is made in order to learn and put into practice my knowledge of Jav
    - [ExpressJS](#-expressjs)
    - [MongoDB](#-mongodb)
    - [Algolia](#-algolia)
+   - [AWS S3](#-AWS-S3)
 - [Getting Started](#getting-started)
    - [Testing](#getting-started)
       - [Option 1](#option-1-using-heroku-enviroment)
@@ -24,7 +25,7 @@ This project is made in order to learn and put into practice my knowledge of Jav
 - Full JSON's compatibility
 - Complete and partial searches
   - Custom search with statistics
-- Image uploads
+- Image uploads to Amazon Web Services
 
 
 # 🧰Tools and frameworks
@@ -44,6 +45,7 @@ This API includes the following tools and frameworks.
   - [algoliasearch](https://www.npmjs.com/package/algoliasearch)
 - [MongoDB](https://www.mongodb.com/)
 - [Algolia](https://www.algolia.com/)
+- [AWS S3](https://aws.amazon.com/es/s3/?nc2=type_a)
 
 ## <img src="https://emojis.slackmojis.com/emojis/images/1487369371/1776/nodejs.png?1487369371"  width="35"> NodeJS
 NodeJs was used to create the entire server environment using JavaScript as the main language with the implementation of the newest features included in ES6 such as: Let, Const and Arrow functions.
@@ -56,6 +58,9 @@ MongoDB is used as the database system for this project due to its high scalabil
 
 ## <img src="https://github.algolia.com/assets/logo-algolia-22a6301916f308bf4f78b8b159b12716.svg" width="80"> Algolia 
 Algolia is used as the custom search engine for the API since it has many functions that help to improve the implementation of searches easily, in addition to providing a system that allows you to know what your users are looking for, which helps to know how to easily direct the course of your project, In addition to that, it will also allow us to search for partial and total information included in the database quickly and safely through indexes.
+
+## <img src="https://github.algolia.com/assets/logo-algolia-22a6301916f308bf4f78b8b159b12716.svg" width="80"> AWS S3
+AWS S3 It is used as the cloud storage system for all the images and files that need to be uploaded, in order to avoid uploading all of them directly to the server.
 
 # 💡Getting Started 
 To see how this project works you have two options
