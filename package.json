@@ -5,11 +5,11 @@
   "main": "app.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon",
-    "start": "cross-env node build/src/index.js",
-    "heroku-prebuild": "npm install --only=dev",
-    "heroku-postbuild": "npm run build",
+    "prod:serve": "node dist/src/index.js",
+    "start": "cross-env npm run build && npm run prod:serve",
+    "heroku-postbuild": "npm install --only=dev && npm run build",
     "build": "tsc",
-    "clean": "rm -rf build",
+    "clean": "rm -rf dist",
     "ts:node": "cross-env NODE_ENV=development ts-node src/index.ts"
   },
   "keywords": [],
