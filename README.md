@@ -7,26 +7,18 @@ allows to perform a CRUD, complete and partial searches with pagination and imag
 # 📑Table of Contents
 
 - [Features](#features)
-<<<<<<< HEAD
 - [Tools and Frameworks](#tools-and-frameworks)
     - [NodeJS](#-nodejs)
     - [ExpressJS](#-expressjs)
     - [MongoDB](#-mongodb)
     - [Algolia](#-algolia)
-=======
-- [Tools and Frameworks](#tools-and-frameworks)  
-   - [NodeJS](#-nodejs)
-   - [ExpressJS](#-expressjs)
-   - [MongoDB](#-mongodb)
-   - [Algolia](#-algolia)
-   - [AWS S3](#-AWS-S3)
->>>>>>> d959079bf32732824c1fa88cf692f05aa8a67ad1
+    - [AWS S3](#-AWS-S3)
 - [Getting Started](#getting-started)
     - [Testing](#getting-started)
-        - [Option 1](#option-1-using-heroku-enviroment)
+        - [Option 1](#option-1-using-heroku-environment)
         - [Option 2](#option-2-cloning-repository)
     - [Interaction with the API](#interaction-with-the-api)
-- [Troubleshouting](#troubleshouting)
+- [Troubleshooting](#troubleshooting)
 
 # ✨Features
 
@@ -35,13 +27,8 @@ allows to perform a CRUD, complete and partial searches with pagination and imag
 - Full error handling to quickly see what is wrong
 - Full JSON's compatibility
 - Complete and partial searches
-<<<<<<< HEAD
     - Custom search with statistics
-- Image uploads
-=======
-  - Custom search with statistics
 - Image uploads to Amazon Web Services
->>>>>>> d959079bf32732824c1fa88cf692f05aa8a67ad1
 
 # 🧰Tools and frameworks
 
@@ -75,31 +62,23 @@ ExpressJS was used as the main framework of the project to build the API environ
 
 ## <img src="https://img.icons8.com/color/452/mongodb.png"  width="30"> MongoDB
 
-<<<<<<< HEAD
-MongoDB is used as the database system for this project due to its high scalability and not so complicated
-implementation, and since it has the basic functionalities that were needed for this project.
-
-## <img src="https://github.algolia.com/assets/logo-algolia-22a6301916f308bf4f78b8b159b12716.svg" width="80"> Algolia
+## Algolia
 
 Algolia is used as the custom search engine for the API since it has many functions that help to improve the
 implementation of searches easily, in addition to providing a system that allows you to know what your users are looking
 for, which helps to know how to easily direct the course of your project, In addition to that, it will also allow us to
 search for partial and total information included in the database quickly and safely through indexes.
 
+## AWS S3
+
+AWS S3 It is used as the cloud storage system for all the images and files that need to be uploaded, in order to avoid
+uploading all of them directly to the server.
+
 # 💡Getting Started
 
-=======
-## Algolia 
-Algolia is used as the custom search engine for the API since it has many functions that help to improve the implementation of searches easily, in addition to providing a system that allows you to know what your users are looking for, which helps to know how to easily direct the course of your project, In addition to that, it will also allow us to search for partial and total information included in the database quickly and safely through indexes.
-
-## AWS S3
-AWS S3 It is used as the cloud storage system for all the images and files that need to be uploaded, in order to avoid uploading all of them directly to the server.
-
-# 💡Getting Started 
->>>>>>> d959079bf32732824c1fa88cf692f05aa8a67ad1
 To see how this project works you have two options
 
-## 🟡Option 1: Using Heroku enviroment
+## 🟡Option 1: Using Heroku environment
 
 To test this API You can access the following [link](https://manga-bk.herokuapp.com/) and after accessing the link you
 can use [Postman](https://www.postman.com/) or any tool of your choice to interact with the
@@ -113,7 +92,7 @@ API features as you like to see how the API interacts.
 
 Clone the repository and follow these steps:
 
-1. install all the dependecies using `npm i`.
+1. install all the dependencies using `npm i`.
 
 2. Register in Algolia and get your API keys, indexes and your APP ID
 
@@ -121,7 +100,7 @@ Clone the repository and follow these steps:
     - Get your MongoDB URI and your username and password, after this just go to the next step
 
 3. If you already have your MongoDB URI with their respective username and password just create an **.env** file and put
-   the necessary environment variables and their values for it to work, the variables are in the example file **
+   the necessary environment variables, and their values for it to work, the variables are in the example file **
    .env.example**.
 
 4. After that you can easily use the command `npm run dev` to start the server in development mode and start interacting
@@ -130,8 +109,8 @@ Clone the repository and follow these steps:
 
 ## Interaction with the API
 
-To interact with the api you will need an access token (JWT) to place in the Header and it can be obtained by creating a
-new user or logging in with any of the existing users.
+To interact with the api you will need an access token (JWT) to place in the Header, and it can be obtained by creating
+a new user or logging in with any of the existing users.
 
 To be quick and simple you can use the following credentials to get your token
 > {
@@ -170,7 +149,7 @@ This endpoint can interact with the complete **CRUD**, being able to send reques
 DELETE.**
 
 The **GET** method accepts as a parameter any ID that already exists and will return all the information regarding that
-ID, here is a example of the Endpoint
+ID, here is an example of the Endpoint
 > https://manga-bk.herokuapp.com/mangas/609ffa45fbe4925aa004e503.
 
 If you make a request to that Endpoint you will receive a response similar to this
@@ -189,7 +168,7 @@ guide `https://manga-bk.herokuapp.com/mangas?search=YOURTEXT`
 
 ![Query response](https://user-images.githubusercontent.com/29514668/118373256-2424d100-b5b6-11eb-9f25-646bbd93a25a.png)
 
-in adition you can request all the docs in the database and select how many you want to get in your response
+in addition, you can request all the docs in the database and select how many you want to get in your response
 using `limit=NUMBERSONLY` for your limit and `page=NUMBERSONLY` to select the page you want to see
 
 ### Limit example
@@ -215,8 +194,8 @@ the EndPoint.
 
 The **DELETE** method needs the ID to be able to delete the information.
 
-# ❗Troubleshouting
+# ❗Troubleshooting
 
-If you find any problem in my code or anything else, feel free to contact me, open a issue or do a pull request, that
-way I can keep learning and I can improve the code so that way anyone else can learn from it in the best way.
+If you find any problem in my code or anything else, feel free to contact me, open an issue or do a pull request, that
+way I can keep learning, and I can improve the code so that way anyone else can learn from it in the best way.
 

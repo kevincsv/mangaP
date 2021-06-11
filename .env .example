@@ -1,26 +1,24 @@
+DEBUG_GLOBAL=
+DEBUG_ALGOLIA=
+
 MONGODB_URI=
 
-SECRET=
+JWT_SECRET=
 
 # Only accepts values in milliseconds 
 JWT_TTL=
 
 # Algolia admin api key
-ALG_ADMIN=
-
-# Algolia application ID
-ALG_APP_ID=
-
-# Algolia Index Name
-ALG_MANGA_INDEX=
+ALGOLIA_ADMIN=
+ALGOLIA_APP_ID=
+ALGOLIA_MANGA_INDEX=
 
 # AWS S3 Secret credentials
 AWS_SECRET_ID=
-
 AWS_SECRET_KEY=
 
 # The name of the bucket that you have created
-BUCKET_NAME=
+AWS_BUCKET_NAME=
 
 # The region of your bucket
-REGION=
+AWS_REGION=
