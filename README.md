@@ -7,11 +7,20 @@ allows to perform a CRUD, complete and partial searches with pagination and imag
 # 📑Table of Contents
 
 - [Features](#features)
+<<<<<<< HEAD
 - [Tools and Frameworks](#tools-and-frameworks)
     - [NodeJS](#-nodejs)
     - [ExpressJS](#-expressjs)
     - [MongoDB](#-mongodb)
     - [Algolia](#-algolia)
+=======
+- [Tools and Frameworks](#tools-and-frameworks)  
+   - [NodeJS](#-nodejs)
+   - [ExpressJS](#-expressjs)
+   - [MongoDB](#-mongodb)
+   - [Algolia](#-algolia)
+   - [AWS S3](#-AWS-S3)
+>>>>>>> d959079bf32732824c1fa88cf692f05aa8a67ad1
 - [Getting Started](#getting-started)
     - [Testing](#getting-started)
         - [Option 1](#option-1-using-heroku-enviroment)
@@ -26,8 +35,13 @@ allows to perform a CRUD, complete and partial searches with pagination and imag
 - Full error handling to quickly see what is wrong
 - Full JSON's compatibility
 - Complete and partial searches
+<<<<<<< HEAD
     - Custom search with statistics
 - Image uploads
+=======
+  - Custom search with statistics
+- Image uploads to Amazon Web Services
+>>>>>>> d959079bf32732824c1fa88cf692f05aa8a67ad1
 
 # 🧰Tools and frameworks
 
@@ -48,6 +62,7 @@ This API includes the following tools and frameworks.
     - [algoliasearch](https://www.npmjs.com/package/algoliasearch)
 - [MongoDB](https://www.mongodb.com/)
 - [Algolia](https://www.algolia.com/)
+- [AWS S3](https://aws.amazon.com/es/s3/?nc2=type_a)
 
 ## <img src="https://emojis.slackmojis.com/emojis/images/1487369371/1776/nodejs.png?1487369371"  width="35"> NodeJS
 
@@ -60,6 +75,7 @@ ExpressJS was used as the main framework of the project to build the API environ
 
 ## <img src="https://img.icons8.com/color/452/mongodb.png"  width="30"> MongoDB
 
+<<<<<<< HEAD
 MongoDB is used as the database system for this project due to its high scalability and not so complicated
 implementation, and since it has the basic functionalities that were needed for this project.
 
@@ -72,6 +88,15 @@ search for partial and total information included in the database quickly and sa
 
 # 💡Getting Started
 
+=======
+## Algolia 
+Algolia is used as the custom search engine for the API since it has many functions that help to improve the implementation of searches easily, in addition to providing a system that allows you to know what your users are looking for, which helps to know how to easily direct the course of your project, In addition to that, it will also allow us to search for partial and total information included in the database quickly and safely through indexes.
+
+## AWS S3
+AWS S3 It is used as the cloud storage system for all the images and files that need to be uploaded, in order to avoid uploading all of them directly to the server.
+
+# 💡Getting Started 
+>>>>>>> d959079bf32732824c1fa88cf692f05aa8a67ad1
 To see how this project works you have two options
 
 ## 🟡Option 1: Using Heroku enviroment
