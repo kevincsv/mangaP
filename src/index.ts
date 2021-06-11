@@ -15,13 +15,11 @@ import makeReqGet from "./tools/makeReqGet";
 import makeResToJSON from "./tools/makeResToJSON";
 import './database';
 
+import mangas from "./routes/mangas";
+import users from "./routes/auth";
+import redirections from "./routes/redirections";
+
 // *******************   INITIALIZATIONS   ******************* \\
-
-import routes from "./routes/mangas";
-
-import routes0 from "./routes/auth";
-
-import routes01 from "./routes/redirections";
 
 mongoose.set('returnOriginal', false);
 const app = express();
@@ -40,9 +38,9 @@ app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 
 // *******************   SERVER ROUTES   ******************* \\
-app.use('/mangas', routes);
-app.use('/users', routes0);
-app.use('/', routes01);
+app.use('/mangas', mangas);
+app.use('/users', users);
+app.use('/', redirections);
 
 // *******************   404 ERROR HANDLER    ******************* \\
 app.use((_req: Request, res: Response) => {
