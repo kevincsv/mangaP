@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon",
     "prod:serve": "node dist/src/index.js",
-    "start": "cross-env npm run build && npm run prod:serve",
+    "start": "cross-env npm run prod:serve",
     "heroku-prebuild": "npm install --only=dev",
     "heroku-postbuild": "npm run build",
     "build": "tsc",
