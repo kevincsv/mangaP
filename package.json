@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon",
-    "start": "cross-env NODE_ENV=production node build/src",
+    "start": "cross-env NODE_ENV=production node build/src/index.js",
     "heroku-postbuild": "npm install --only=dev tsc",
     "clean": "rm -rf build",
     "ts:node": "cross-env NODE_ENV=development ts-node src/index.ts"
