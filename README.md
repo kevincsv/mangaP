@@ -1,8 +1,9 @@
 # ❓About this project
 
-This project is made in order to learn and put into practice my knowledge of JavaScript on the BackEnd side, it was born
-as a personal project for the realization of sharing multimedia content for free, It consists of a RESTful API, which
-allows to perform a CRUD, complete and partial searches with pagination and image uploads.
+This project is made in order to learn and put into practice my knowledge of JavaScript and later implementing
+TypeScript on the BackEnd side, it was born as a personal project for the realization of sharing multimedia content for
+free, It consists of a RESTful API, which allows to perform a CRUD, complete and partial searches with pagination and
+image uploads.
 
 # 📑Table of Contents
 
