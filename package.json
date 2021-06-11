@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon",
     "start": "cross-env NODE_ENV=production node build/src",
-    "heroku-postbuild": "tsc",
+    "heroku-postbuild": "npm install --only=dev tsc",
     "clean": "rm -rf build",
     "ts:node": "cross-env NODE_ENV=development ts-node src/index.ts"
   },
