@@ -8,7 +8,7 @@
     "prod:serve": "node dist/src/index.js",
     "start": "cross-env npm run build && npm run prod:serve",
     "heroku-prebuild": "npm install --only=dev",
-    "heroku-postbuild": "npm install --only=dev && npm run build",
+    "heroku-postbuild": "npm run build",
     "build": "tsc",
     "clean": "rm -rf dist",
     "ts:node": "cross-env NODE_ENV=development ts-node src/index.ts"
